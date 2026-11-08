@@ -4,79 +4,225 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>znjxz · 笔记花园</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+
 <style>
   :root {
-    --bg: #fdfcfb; --fg: #2c2c2c; --muted: #78736f;
-    --accent: #7a6a5a; --line: #e8e3dd; --card: #fff;
+    /* 老钱风：米纸底 / 墨色 / 暗金 / 极淡的分隔线 */
+    --paper:      #faf8f5;
+    --paper-deep: #f3efe9;
+    --ink:        #1f1d1a;
+    --ink-soft:   #3d3934;
+    --muted:      #8a8279;
+    --gold:       #8c7554;
+    --rule:       #ddd6cb;
+    --rule-soft:  #ece7df;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#171614; --fg:#e6e2dd; --muted:#9a938c;
-            --accent:#c4a882; --line:#2e2b28; --card:#1f1e1b; }
+    :root {
+      --paper:      #1a1917;
+      --paper-deep: #211f1c;
+      --ink:        #e8e3da;
+      --ink-soft:   #c9c3b8;
+      --muted:      #8f877c;
+      --gold:       #c9a97a;
+      --rule:       #33302b;
+      --rule-soft:  #272521;
+    }
   }
-  * { box-sizing: border-box; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
-    margin: 0; background: var(--bg); color: var(--fg);
-    font: 17px/1.75 -apple-system, "PingFang SC", "Noto Sans CJK SC",
-          "Microsoft YaHei", system-ui, sans-serif;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "EB Garamond", "Noto Serif SC", Georgia,
+                 "Songti SC", "SimSun", serif;
+    font-size: 18.5px;
+    line-height: 1.85;
+    font-feature-settings: "palt" 1, "kern" 1, "liga" 1;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  .wrap { max-width: 44rem; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
-  header { margin-bottom: 3.5rem; }
-  h1 { font-size: 1.65rem; font-weight: 600; margin: 0 0 .6rem;
-       letter-spacing: .01em; }
-  .sub { color: var(--muted); font-size: .95rem; margin: 0; }
-  h2 { font-size: .78rem; font-weight: 600; letter-spacing: .12em;
-       text-transform: uppercase; color: var(--muted);
-       margin: 3rem 0 1.2rem; padding-bottom: .6rem;
-       border-bottom: 1px solid var(--line); }
+
+  /* 极淡的纸纹，不是渐变 */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    opacity: .36;
+    background-image:
+      radial-gradient(circle at 18% 24%, rgba(140,117,84,.035) 0 1px, transparent 1px),
+      radial-gradient(circle at 72% 68%, rgba(140,117,84,.028) 0 1px, transparent 1px);
+    background-size: 137px 149px, 211px 197px;
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 5.5rem 1.75rem 7rem;
+  }
+
+  /* ── 页头 ── */
+  header { margin-bottom: 1rem; }
+
+  .eyebrow {
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: 2.15rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: .015em;
+    margin: 0 0 .85rem;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 30rem;
+  }
+
+  /* 页头下方双线，古典书页的做法 */
+  .rule-double {
+    margin: 2.75rem 0 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule-soft);
+    height: 3px;
+  }
+
+  /* ── 章节 ── */
+  h2 {
+    font-size: .74rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 4rem 0 1.75rem;
+    padding-bottom: .85rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  /* ── 条目 ── */
   ul { list-style: none; padding: 0; margin: 0; }
-  li { margin: 0; }
+
+  li + li { border-top: 1px solid var(--rule-soft); }
+
   li a {
-    display: block; padding: .9rem 1rem; margin: 0 -.25rem;
-    color: var(--fg); text-decoration: none; border-radius: 8px;
-    transition: background .15s ease;
+    display: block;
+    padding: 1.35rem .5rem 1.35rem 0;
+    color: inherit;
+    text-decoration: none;
+    transition: padding-left .25s ease, color .25s ease;
   }
-  li a:hover { background: var(--card); }
-  li .t { font-weight: 500; }
-  li .d { display: block; color: var(--muted); font-size: .87rem;
-          margin-top: .25rem; line-height: 1.55; }
+
+  li a:hover { padding-left: .55rem; }
+  li a:hover .t { color: var(--gold); }
+
+  .t {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: .01em;
+    transition: color .25s ease;
+  }
+
+  .d {
+    display: block;
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.65;
+    margin-top: .4rem;
+  }
+
+  /* ── 引文式说明 ── */
   .note {
-    margin-top: 4rem; padding: 1.2rem 1.4rem;
-    background: var(--card); border-left: 3px solid var(--accent);
-    border-radius: 6px; font-size: .9rem; color: var(--muted);
+    margin-top: 1rem;
+    padding: 1.9rem 0 0 1.6rem;
+    border-left: 1px solid var(--gold);
+    font-size: 1rem;
+    line-height: 1.95;
+    color: var(--ink-soft);
   }
-  footer { margin-top: 4rem; padding-top: 1.5rem;
-           border-top: 1px solid var(--line);
-           color: var(--muted); font-size: .82rem; }
+
+  .note em { color: var(--muted); font-style: italic; }
+
+  /* ── 页脚 ── */
+  footer {
+    margin-top: 5.5rem;
+    padding-top: 1.9rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: .82rem;
+    letter-spacing: .05em;
+    font-family: "EB Garamond", Georgia, serif;
+  }
+
+  footer p { margin: 0; }
+  footer .sep { color: var(--rule); margin: 0 .7rem; }
+
+  /* 小屏 */
+  @media (max-width: 520px) {
+    body { font-size: 17.5px; }
+    .wrap { padding: 3.5rem 1.3rem 5rem; }
+    h1 { font-size: 1.8rem; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <h1>znjxz · 笔记花园</h1>
-    <p class="sub">这里的笔记还在生长 —— 会持续修订、扩展，也会删减。</p>
+    <p class="eyebrow">Notes</p>
+    <h1>znjxz · <em>笔记花园</em></h1>
+    <p class="sub">
+      这些笔记还在生长。会改写、会增补，也会删掉当初觉得对的部分。
+    </p>
+    <hr class="rule-double">
   </header>
 
-  <h2>正在写</h2>
+  <h2>正在整理</h2>
   <ul>
     <li>
       <a href="#">
-        <span class="t">整理中</span>
-        <span class="d">第一批公开笔记正在整理，即将上线。</span>
+        <span class="t">第一批公开笔记</span>
+        <span class="d">整理中，暂未上线。</span>
       </a>
     </li>
   </ul>
 
-  <h2>关于这个站</h2>
+  <h2>关于这里</h2>
   <div class="note">
-    这里不是博客。博客按时间发布、写完就不再改；<br>
-    这里按主题互链、永远没有「最终版」。<br>
-    想到什么写什么，旧的会被新的修正。
+    这不是博客。<br>
+    博客按日期发布，写完就不再变动；<br>
+    这里按主题互相牵连，并且<em>永远没有最终版本</em>。
   </div>
 
   <footer>
-    <p>© <span id="y"></span> znjxz · 内容持续更新</p>
+    <p>© <span id="y"></span> znjxz<span class="sep">·</span>持续更新<span class="sep">·</span>非终稿</p>
   </footer>
 
 </div>
