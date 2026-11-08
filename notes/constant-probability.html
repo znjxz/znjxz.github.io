@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>那条被平均出来的概率 · znjxz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --ink:#1f1d1a; --ink-soft:#3d3934; --muted:#8a8279;
+    --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --ink:#e8e3da; --ink-soft:#c9c3b8; --muted:#8f877c;
+            --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+
+  .back{
+    display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s;
+  }
+  .back:hover{color:var(--gold)}
+
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 1.4rem;font-weight:500;
+  }
+  h1{
+    font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;
+    margin:0 0 1.1rem;
+  }
+  .meta{
+    color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem;
+  }
+  .rule-double{
+    margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule-soft);height:3px;
+  }
+
+  h2{
+    font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+    border-bottom:1px solid var(--rule-soft);
+  }
+
+  p{margin:0 0 1.5rem}
+  p.lead{font-size:1.06rem;color:var(--ink-soft)}
+
+  em{font-style:italic;color:var(--ink-soft)}
+  strong{font-weight:500;color:var(--ink)}
+
+  blockquote{
+    margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+    border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+  }
+  blockquote p:last-child{margin-bottom:0}
+
+  .aside{
+    margin:2.2rem 0;padding:1.4rem 1.6rem;
+    background:var(--paper-deep);border-radius:4px;font-size:.95rem;
+    line-height:1.85;color:var(--ink-soft);
+  }
+  .aside .lbl{
+    display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.6rem;font-weight:500;
+  }
+
+  .num{
+    display:inline-block;font-size:.78rem;letter-spacing:.1em;
+    color:var(--gold);margin-right:.5em;
+  }
+
+  footer{
+    margin-top:5rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+    color:var(--muted);font-size:.82rem;letter-spacing:.05em;
+  }
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/">← 花园</a>
+
+  <p class="eyebrow">概率 · 判断</p>
+  <h1>那条被平均出来的概率</h1>
+  <p class="meta">2023 年初稿 · 2026 年整理</p>
+  <hr class="rule-double">
+
+  <p class="lead">
+    我们习惯把「第一年的失败率是 9%」读成「每年都是 9%」。
+    这两个说法看起来几乎一样，但在十年尺度上，它们给出的答案相差极大。
+  </p>
+
+  <h2>两个很少被检查的假设</h2>
+
+  <p>
+    把一个概率往时间上外推，等于同时默认了两件事。
+  </p>
+
+  <p>
+    <span class="num">一</span><strong>恒定概率假设</strong>：第一个统计区间里的概率，在之后的每个区间都保持不变。
+  </p>
+
+  <p>
+    <span class="num">二</span><strong>独立假设</strong>：这一次的结果，与之前、之后的结果互不影响。
+  </p>
+
+  <p>
+    这两条在教科书里是被明确写出来的前提，但在日常引用里几乎从不被提及。
+    更麻烦的是，它们在现实世界里经常<em>并不成立</em>。
+  </p>
+
+  <h2>一个避孕药的例子</h2>
+
+  <p>
+    《纽约时报》曾有篇文章讨论几种避孕手段的一年期与十年期成功率。
+    以口服避孕药为例：第一年的怀孕率约为 9%。
+    文章随后把这个数字当作恒定概率，逐年线性外推，
+    得出「十年间持续服用，总失败率会高得惊人」的结论。
+  </p>
+
+  <p>
+    这个算法的问题，用一个抛硬币的模型就能看清。
+  </p>
+
+  <div class="aside">
+    <span class="lbl">思想实验</span>
+    假设有一百枚硬币，分给一百个人。
+    其中九十枚两面都是正面，十枚两面都是反面。
+    第一次每人抛一次，统计结果是：<strong>正面 90%</strong>。
+    如果把这个概率线性外推，十次全是正面的概率应当是 0.9 的十次方，约 35%。
+    但事实是，<strong>十次之后，仍然是 90%</strong>。
+  </div>
+
+  <p>
+    为什么？因为那 90% 从来不是一个可以随时间叠加的「事件概率」，
+    它只是这个混合样本的平均值。
+    有九十个人手上本来就是双正面币，他们不是「这次运气好」，
+    而是<em>根本没有失败的可能</em>；
+    另外十个人则相反。
+  </p>
+
+  <p>
+    线性外推的错误，在于把这两个人群的差异抹平了：
+    它把「本来就不会失败的人」的运气，平均分配给所有人，
+    于是对于那 90% 的人来说，得到的是一个虚高到失真的数字。
+    年份越往后推，这个虚高被放大得越厉害。
+  </p>
+
+  <h2>独立假设同样可疑</h2>
+
+  <p>
+    更值得注意的是，这条时间序列里的结果很可能<strong>并不独立</strong>。
+  </p>
+
+  <p>
+    第一年因为使用不当而怀孕的人，之后可能会更加小心；
+    而长年使用顺利的人，反而可能逐渐放松警惕。
+    也就是说，前一期的结果会改变后一期的概率——
+    这正好违反了独立假设。
+  </p>
+
+  <p>
+    一旦独立性不成立，你手里的就不再是一串可以相乘的独立事件，
+    而是一条<em>会被自身历史改写</em>的路径。
+    相乘的数学形式还在，但它描述的东西已经不是同一回事了。
+  </p>
+
+  <h2>为什么这件事值得单独写下来</h2>
+
+  <p>
+    同样的错误，在交易里每天都在发生。
+  </p>
+
+  <p>
+    把某个策略过去三年的胜率，直接拿去估算未来十年的期望；
+    把某类行情下统计出来的胜率，套用到所有行情；
+    把一个由「本来就不会输的样本」和「本来就在输的样本」
+    混合而成的平均数，当成自己下一笔交易的胜算。
+  </p>
+
+  <p>
+    这些做法都隐含了恒定概率与独立假设，
+    而它们通常既没被检验，也没被声明。
+  </p>
+
+  <blockquote>
+    <p>
+      一个平均数能告诉你的，只有这个样本的平均水平。
+      它不能告诉你，你属于这个样本里的哪一部分。
+    </p>
+  </blockquote>
+
+  <p>
+    所以在引用任何一个「成功率」之前，我现在的习惯是先问三件事：
+    这个数字是从哪个人群里统计出来的；
+    这个人群里是否存在我无法区分的子群；
+    以及，前一期的结果会不会改变后一期的概率。
+  </p>
+
+  <p>
+    三个问题里只要有一个答不上来，那个数字就只能当作参考，
+    不能当作计算的起点。
+  </p>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
