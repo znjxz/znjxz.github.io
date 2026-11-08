@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>两种不可预测 · znjxz</title>
+<meta name="description" content="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
 <style>
   :root {
     --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
@@ -43,30 +43,43 @@
   .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
   .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
                border-bottom:1px solid var(--rule-soft);height:3px}
-  h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
      color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
      border-bottom:1px solid var(--rule-soft)}
-  p{margin:0 0 1.5rem}
-  p.lead{font-size:1.06rem;color:var(--ink-soft)}
-  em{font-style:italic;color:var(--ink-soft)}
-  strong{font-weight:500;color:var(--ink)}
-  blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
-             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem}
-  blockquote p:last-child{margin-bottom:0}
-  .aside{margin:2.2rem 0;padding:1.4rem 1.6rem;background:var(--paper-deep);
-         border-radius:4px;font-size:.95rem;line-height:1.85;color:var(--ink-soft)}
-  .aside .lbl{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-              color:var(--gold);margin-bottom:.6rem;font-weight:500}
-  .num{display:inline-block;font-size:.78rem;letter-spacing:.1em;
-       color:var(--gold);margin-right:.5em}
-  table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
-  th,td{text-align:left;padding:.75rem .6rem;border-bottom:1px solid var(--rule-soft);
-        vertical-align:top}
-  th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-     color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
-  td:first-child{white-space:nowrap;color:var(--ink-soft)}
-  footer{margin-top:5rem;padding-top:1.8rem;border-top:1px solid var(--rule);
-         color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
   footer p{margin:0 0 .5rem}
   footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
   footer a:hover{color:var(--gold)}
@@ -74,178 +87,32 @@
     body{font-size:17.5px}
     .wrap{padding:3rem 1.3rem 5rem}
     h1{font-size:1.62rem}
-    table{font-size:.86rem}
-    th,td{padding:.6rem .35rem}
+    article table{font-size:.86rem}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <a class="back" href="/">← 花园</a>
-
   <p class="eyebrow">不确定性 · 判断</p>
   <h1>两种不可预测</h1>
-  <p class="meta">2023 年初稿 · 2026 年整理</p>
+  <p class="meta">2023-05-13 · 持续修订</p>
   <hr class="rule-double">
-
-  <p class="lead">
-    「短期能看清，长期看不清」和「短期看不清，长期能看清」，
-    这两句话指向的不是同一种无知。它们的区别，比大多数人以为的更根本。
-  </p>
-
-  <h2>混沌：确定性的规则，算不出来的结果</h2>
-
-  <p>
-    混沌系统最容易引起误解。它常在通俗叙述里被说成「随机的」，
-    但严格来说，它恰恰是<strong>完全确定的</strong>。
-  </p>
-
-  <p>
-    系统的规则是确定的，没有任何概率成分：
-    给定完全相同的初始条件，它必然走出完全相同的一条轨迹。
-    问题不在于规则，而在于<em>计算</em>。
-  </p>
-
-  <p>
-    系统内部有大量部件，它们之间既合作也竞争，
-    这种自组织形成了非线性——
-    微小的差异会被不断放大，而不是相互抵消。
-    于是即便规则清晰，初始条件下的一点点误差，
-    也会在若干步之后膨胀成完全不同的结果。
-  </p>
-
-  <div class="aside">
-    <span class="lbl">一个具体的量</span>
-    这个「若干步」并非含糊的说法。混沌系统有一个内在的时间尺度，
-    叫<strong>李雅普诺夫时间</strong>：超过这个长度，预测误差会以指数方式滚雪球，
-    直到彻底失去意义。<br><br>
-    对混沌电路，这个尺度大约是<strong>千分之一秒</strong>；
-    对天气，通常是<strong>几天</strong>；
-    对太阳系，是<strong>数百万年</strong>。
-  </div>
-
-  <p>
-    而提高精度的代价是指数的。在同样的准确度要求下，
-    想把预测时长延长一倍，需要将初始测量精度提高约十倍；
-    延长到三倍，需要一百倍；到四倍，需要一千倍。
-    这不是工程能力的问题，是<strong>数学上的硬墙</strong>。
-  </p>
-
-  <p>
-    所以混沌的不可预测是「<em>短期可测，长期不可测</em>」。
-    它承认世界是确定的，只是我们没有能力算到那么远。
-  </p>
-
-  <h2>量子：根本不存在那条确定的轨迹</h2>
-
-  <p>
-    量子力学给出的图景完全不同。
-  </p>
-
-  <p>
-    在它那里，不确定不是因为我们算得不够准，
-    而是<strong>本就没有一条确定的轨迹可供计算</strong>。
-    单个粒子的行为在本质上是概率性的，
-    不存在「如果你测得足够准就能预知」这回事。
-  </p>
-
-  <p>
-    但到了宏观尺度，大量的概率性事件叠加，
-    反而呈现出稳定的统计规律。
-    温度、压强、化学反应速率，这些在宏观上是高度可预测的。
-  </p>
-
-  <p>
-    于是从时间尺度看，量子的图景恰好与混沌相反：
-    <em>短期没有确定性，长期反而有某种确定性</em>。
-  </p>
-
-  <p>
-    这里要留一句保留。量子世界是否存在隐变量，至今仍有争议。
-    如果存在，那我们今天所说的「本质随机」就只是当前理论的局限，
-    底下仍然藏着某种确定性。这一点尚无定论。
-  </p>
-
-  <h2>两种无知，一张对照</h2>
-
-  <table>
-    <thead>
-      <tr><th></th><th>混沌</th><th>量子</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>确定性的来源</td>
-        <td>规则完全确定</td>
-        <td>本质上不确定</td>
-      </tr>
-      <tr>
-        <td>不可预测的原因</td>
-        <td>误差被非线性放大</td>
-        <td>没有确定轨迹可算</td>
-      </tr>
-      <tr>
-        <td>短期</td>
-        <td>可以预测</td>
-        <td>无法预测</td>
-      </tr>
-      <tr>
-        <td>长期</td>
-        <td>无法预测</td>
-        <td>宏观统计规律稳定</td>
-      </tr>
-      <tr>
-        <td>提高精度的作用</td>
-        <td>有效，但代价指数增长</td>
-        <td>无效</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>为什么这个区分在交易里重要</h2>
-
-  <p>
-    交易者对「短期和长期哪个能把握」这件事，长期存在两派看法，
-    而且各自都能找到大量证据。
-  </p>
-
-  <p>
-    一派认为短期可以把握，长期无法把握。
-    这接近于混沌的图景：短期有惯性、有结构可循，
-    但时间一长，无数因素的相互作用会让推演失效。
-  </p>
-
-  <p>
-    另一派认为短期是噪声、长期才有趋势。
-    这更接近量子的图景：短期的单次结果本质上是随机的，
-    但把样本拉长，统计规律就显现出来。
-  </p>
-
-  <blockquote>
-    <p>
-      这两派未必有一方是错的。它们可能在描述两种不同的东西：
-      一种是有确定规则但算不远的系统，另一种是没有确定轨迹但宏观稳定的系统。
-    </p>
-  </blockquote>
-
-  <p>
-    真正危险的是把两者的结论混用——
-    用「短期有规律」的经验去外推长期，
-    或者用「长期有趋势」的统计去预测某一次具体结果。
-    前者等于无视李雅普诺夫时间那道墙，
-    后者等于把宏观统计规律当成个体预言。
-  </p>
-
-  <p>
-    所以在说「这个能预测/不能预测」之前，先分清自己在处理哪一种不确定性，
-    可能比急着找方法更要紧。
-  </p>
+  <article>
+<p>从混沌科学的视角来看:
+是在确定性系统中看似随机的无规律行为。由于确定性的规律，短期内可以预测，又因为蝴蝶效应的不可预测性，长期是无法预测的。
+以上这种看法，本质上还是认为存在确定性的，只不过是因为系统复杂，变量多，造成了系统各部件之间的合作与竞争相互的自组织形成的非线性的特征，这种非线性使得计算难以实现。</p>
+<p>量子科学的角度
+本质上就没有确定性，但是在宏观上存在某些确定性。所以从时间长短来考虑的话，就是认为短期没有确定性，但是长期趋势是存在某种确定性的。
+ps:量子世界存不存在隐变量，也是有争议的.也许存在某种本质上的确定性.</p>
+<p>就像交易上，有的人认为短期是可以把握的，长期无法把握，而有的人认为短期无法把握是混沌的，长期是存在某种趋势性可以把握的。</p>
+  </article>
+  <div class="tags"><span>可输出</span></div>
 
   <footer>
     <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
     <p>© <span id="y"></span> znjxz</p>
   </footer>
-
 </div>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
