@@ -4,7 +4,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent.parent   # .github/scripts -> 仓库根
 NOTES = ROOT / "notes"
 
 INDEX = """<!DOCTYPE html>

@@ -74,6 +74,25 @@
   .wikilink{border-bottom:1px solid var(--gold)}
   .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
   .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
   .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
   .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
               color:var(--muted);margin:0 .8rem .5rem 0}
@@ -115,5 +134,14 @@ ps:量子世界存不存在隐变量，也是有争议的.也许存在某种本�
   </footer>
 </div>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
