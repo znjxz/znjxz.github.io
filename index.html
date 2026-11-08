@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>znjxz · 笔记花园</title>
+<style>
+  :root {
+    --bg: #fdfcfb; --fg: #2c2c2c; --muted: #78736f;
+    --accent: #7a6a5a; --line: #e8e3dd; --card: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#171614; --fg:#e6e2dd; --muted:#9a938c;
+            --accent:#c4a882; --line:#2e2b28; --card:#1f1e1b; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.75 -apple-system, "PingFang SC", "Noto Sans CJK SC",
+          "Microsoft YaHei", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+  header { margin-bottom: 3.5rem; }
+  h1 { font-size: 1.65rem; font-weight: 600; margin: 0 0 .6rem;
+       letter-spacing: .01em; }
+  .sub { color: var(--muted); font-size: .95rem; margin: 0; }
+  h2 { font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+       text-transform: uppercase; color: var(--muted);
+       margin: 3rem 0 1.2rem; padding-bottom: .6rem;
+       border-bottom: 1px solid var(--line); }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin: 0; }
+  li a {
+    display: block; padding: .9rem 1rem; margin: 0 -.25rem;
+    color: var(--fg); text-decoration: none; border-radius: 8px;
+    transition: background .15s ease;
+  }
+  li a:hover { background: var(--card); }
+  li .t { font-weight: 500; }
+  li .d { display: block; color: var(--muted); font-size: .87rem;
+          margin-top: .25rem; line-height: 1.55; }
+  .note {
+    margin-top: 4rem; padding: 1.2rem 1.4rem;
+    background: var(--card); border-left: 3px solid var(--accent);
+    border-radius: 6px; font-size: .9rem; color: var(--muted);
+  }
+  footer { margin-top: 4rem; padding-top: 1.5rem;
+           border-top: 1px solid var(--line);
+           color: var(--muted); font-size: .82rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>znjxz · 笔记花园</h1>
+    <p class="sub">这里的笔记还在生长 —— 会持续修订、扩展，也会删减。</p>
+  </header>
+
+  <h2>正在写</h2>
+  <ul>
+    <li>
+      <a href="#">
+        <span class="t">整理中</span>
+        <span class="d">第一批公开笔记正在整理，即将上线。</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>关于这个站</h2>
+  <div class="note">
+    这里不是博客。博客按时间发布、写完就不再改；<br>
+    这里按主题互链、永远没有「最终版」。<br>
+    想到什么写什么，旧的会被新的修正。
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> znjxz · 内容持续更新</p>
+  </footer>
+
+</div>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
