@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>货币的第四种价格：一篇 Pozsar 锐评 · znjxz</title>
+<meta name="description" content="低通胀三支柱崩塌 / 元首比央行行长重要 / 货币的第四种价格 / 布雷顿森林 III——从交易者视角的二次创作">
+<meta name="group" content="市场评论">
+<meta name="created" content="2026-11-10">
+<meta name="tags" content="可输出,宏观,通胀">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">市场评论</p>
+  <h1>货币的第四种价格：一篇 Pozsar 锐评</h1>
+  <p class="meta">2026-11-10 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="_1">货币的第四种价格</h1>
+<blockquote>
+<p>材料：<code>2024/2024-12/</code> 两份 Pozsar 编译稿（2022-08）。本篇为二次创作：截取一段原文，紧跟一段锐评，段段对应。观点属 Pozsar，代价由评论者自负。</p>
+</blockquote>
+<h2 id="_2">〇、先说结论（不，不是结论）</h2>
+<p>2022 年 8 月，一个策略师说了句得罪整个行业的话：<strong>我们这行过去三十年赚钱，不是因为聪明，是因为和平。</strong></p>
+<p>他的原话更漂亮——宏观投资在后冷战时期迎来了黄金时代，可那代人交易的不是货币的四种价格，只是其中三种：面值、利息和汇率。而现在，第四种价格，通胀，成了主战场。</p>
+<p>这不是研报，是讣告。一篇写给全球化的。</p>
+<h2 id="_3">一、三大支柱：所有「常识」都有保质期</h2>
+<blockquote>
+<p><strong>原</strong>：低通胀世界有三大支柱：第一，便宜的移民劳动力使美国服务业的工资保持稳定；第二，从中国进口便宜商品；第三，便宜的俄罗斯天然气为德国工业和世界提供动力。</p>
+</blockquote>
+<p><strong>评</strong>：把这句话读三遍。你看到的不是经济学，是<strong>三笔地缘红利的复利</strong>。移民政策、对华关税、北溪二号——任何一根柱子被抽掉，三十年的廉价世界就开始漏水。2022 年所谓「意外通胀」，不过是红利到期后的正常计息。</p>
+<p>交易者的母语：这叫 regime shift，不叫意外。三十年恒定的低通胀，从来不是物理定律，是 regime 的馈赠。你的回测曲线越漂亮，越该问一句——<strong>它是出生在哪根柱子上的？</strong></p>
+<h2 id="_4">二、元首比行长重要</h2>
+<blockquote>
+<p><strong>原</strong>：「国家元首比中央银行行长更重要……翻译俄语和中文、解读为什么是击掌而不是碰拳，变得比解读央行行长讲话中的语法差异更为重要。」</p>
+</blockquote>
+<p><strong>评</strong>：全文最锋利的一刀。它划破了整条宏观信息链：K 线之下是价格，价格之下是政策，政策之下不是点阵图，是<strong>谁的会议室今晚开着灯</strong>。</p>
+<p>做宏观量化的人最爱说「跟踪央行沟通」。Pozsar 的意思是：你在第二层，信号在第五层。盯了二十年 FOMC 纪要的人，2022 年被一个冬天断气的管道上了课。</p>
+<p>落到实践很冷：把宏观因子拆到「地缘政治暴露度」这一层——<strong>你的组合在赚哪根柱子的钱，就是在赌哪根柱子不倒。</strong></p>
+<h2 id="_5">三、少读弗里德曼，多读麦金德</h2>
+<blockquote>
+<p><strong>原</strong>：「要理解当下的通货膨胀，或许我们应该少读弗里德曼和施瓦茨，多读布热津斯基和麦金德。」</p>
+</blockquote>
+<p><strong>评</strong>：货币学派问「印了多少钞」，地缘学派问「货从哪来、谁在挡路」。2022 年供应链穿孔时，前者的指标全部失灵——货币在暴涨，而通胀的成因在码头的封锁线里。</p>
+<p>翻成我们的话：<strong>「回归均值」的前提是分布稳定</strong>。当生产函数的地缘参数被改写，均值本身就不存在了。你回测里的「中枢」，只是旧世界参数的一张快照。</p>
+<p>这正是认识论那页老问题的宏观版：<strong>哪些维度重要，本身就是一个需要被检验的假设。</strong></p>
+<h2 id="_6">四、货币的第四种价格</h2>
+<blockquote>
+<p><strong>原</strong>：索罗斯、德鲁肯米勒、都铎·琼斯、路易斯·培根这些投资者「交易的主要是四种货币价格中的前三种……但今天的冲突，一场帝国之间复杂的经济战，推动了货币的第四种价格：通货膨胀。」</p>
+</blockquote>
+<p><strong>评</strong>：全文题眼。和平年代，钱的价格由央行定；战争年代，钱的价格由<strong>封锁线</strong>定。宏观 alpha 的黄金时代不是投资者的胜利，是 Pax Americana 发的租金。租金一停，一代人的方法论集体过期。</p>
+<p>凯恩斯在两次大战之间下注，罗斯柴尔德在滑铁卢抢先知道威灵顿赢了——Pozsar 举这两个人就为说一件事：<strong>真正的大钱，从来不在央行决议里，在战报里。</strong></p>
+<h2 id="_7">五、预测通胀是信仰问题</h2>
+<blockquote>
+<p><strong>原</strong>：「判断通胀将何去何从，基本上是一个信仰问题：您认为通货膨胀是周期性的……还是结构性的……如果是后者，通货膨胀才刚刚开始，通胀甚至可以理解为经济战的一种武器。」</p>
+</blockquote>
+<p><strong>评</strong>：翻成交易语言只有一句：<strong>非平稳环境里没有均值回归，只有相变。</strong> 你说「油价终将回到长期区间」——长期区间的定义，恰恰是那个已经死掉的 regime。</p>
+<p>这就是季节性图表必须结合当下利率环境重估的原因，也是 RL 交易建模里「市场非平稳，模型越复杂越容易把噪声当信号」的宏观版本。<strong>所有对概率的外推，外推的都是「支柱寿命」。</strong> 而 2022 年证明：支柱会塌，且毫无预警。</p>
+<h2 id="_8">六、必需品的复仇</h2>
+<blockquote>
+<p><strong>原</strong>：电视、汽车这些非必需品涨价，「并不一定会导致工人要求涨工资，但生活必需品成本上升一定会」；服务业经济正在迎来自己的「欧佩克时刻」。</p>
+</blockquote>
+<p><strong>评</strong>：一段被低估的商业逻辑。必需品的价格传导不是经济学，是<strong>日历</strong>——当食品能源在工资篮子里占了固定比例，工资-价格螺旋就不再是「预期」，是下个月就到期的账单。</p>
+<p>做商品的该记住：<strong>先分清你的品种是工人的刚性支出，还是富人的可选消费。</strong> 前者是通胀的火药引，后者只是风险资产。</p>
+<h2 id="jit">七、明斯基时刻：JIT 是在卖波动率</h2>
+<blockquote>
+<p><strong>原</strong>：「库存之于供应链正如流动性之于银行。」德国从俄罗斯进口的价值两百亿美元的天然气可产生两万亿美元的附加值，隐含百倍杠杆——比雷曼兄弟还高。</p>
+</blockquote>
+<p><strong>评</strong>：把这个类比再推一格：准时制不只是效率，是<strong>卖尾部</strong>。JIT 库存是卖空供应链的尾部，JIT 流动性是卖空市场的尾部。2008 年是银行体系裸卖 IV 被行权，2022 年是全球化裸卖 IV 被行权。</p>
+<p>「明斯基时刻」的精确定义是：<strong>杠杆还在，担保它的秩序没了。</strong> 2008 年的答案是巴塞尔 III；2022 年该有什么，Pozsar 没明说，但每个交易者心里都有——<strong>别把生存押在别人维持的秩序上。</strong></p>
+<h2 id="iii">八、布雷顿森林 III</h2>
+<blockquote>
+<p><strong>原</strong>：「因此布雷顿森林体系 III 终将到来，它正离我们越来越近。」西方将在国防开支、制造业回岸、补库存、重建电网四个方向上投入数万亿美元，这些项目商品密集、资本密集、对利率不敏感，并将挤出利率敏感的私营权益。</p>
+</blockquote>
+<p><strong>评</strong>：如果未来货币的锚从国债换成<strong>大宗商品库存</strong>，那对黄金、原油、铜的所有利率框架分析集体失效——它们不再是实际利率的镜像，而是<strong>新体系的准备金</strong>。</p>
+<p>四个投资方向的属性翻译成人话：这是一轮<strong>不理会加三点五还是加七个点的资本开支周期</strong>。利率敏感型资产的钱，要被行政优先级抽走。对交易者的含义很直接：<strong>别用现金流贴现给这个时代的产业政策定价。</strong></p>
+<h2 id="_9">尾声：一个交易者能做什么</h2>
+<p>读 Pozsar 不是为了变成地缘政治专家，是为了校准三个习惯：</p>
+<ol>
+<li><strong>把宏观叙事当气候，不当天气。</strong> 天气决定这单盈亏，气候决定策略要不要存在。每季度问一次：我的策略出身于哪根支柱？</li>
+<li><strong>宁做 regime 切换，不做 regime 预测。</strong> 2022 年的教训是，预测 regime 的人死在自己对确定性的信仰里，切换 regime 的人活了下来。非平稳环境的正确姿势不是更准的预测，是更快的止损。</li>
+<li><strong>警惕「稳定概率」的馈赠。</strong> 凯利公式假设胜率恒定——它从没说过这个假设免费。所有概率先问一句：这是这个世界的参数，还是旧世界的遗像？</li>
+</ol>
+<p>Pozsar 的终点判断我们无权代答。但这套拆解给了一个交易者最稀缺的东西：<strong>一个能对旧框架说「不」的理由。</strong></p>
+  </article>
+  <div class="tags"><span>可输出</span><span>宏观</span><span>通胀</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
