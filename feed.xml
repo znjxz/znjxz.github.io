@@ -12,13 +12,6 @@
       <description>读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</description>
     </item>
     <item>
-      <title>读书与得到</title>
-      <link>https://znjxz.github.io/notes/读书与得到.html</link>
-      <guid isPermaLink="true">https://znjxz.github.io/notes/读书与得到.html</guid>
-      <pubDate>2026-11-10T00:00:00+08:00</pubDate>
-      <description>读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</description>
-    </item>
-    <item>
       <title>《最好的告别》读书摘录（阿图·葛文德）</title>
       <link>https://znjxz.github.io/notes/being-mortal-excerpts.html</link>
       <guid isPermaLink="true">https://znjxz.github.io/notes/being-mortal-excerpts.html</guid>
@@ -143,5 +136,12 @@
       <guid isPermaLink="true">https://znjxz.github.io/notes/dushu-monthly-2022-02.html</guid>
       <pubDate>2024-10-29T00:00:00+08:00</pubDate>
       <description>《读书》2022年2期</description>
+    </item>
+    <item>
+      <title>《古文观止》读书摘录</title>
+      <link>https://znjxz.github.io/notes/guwen-guanzhi-excerpts.html</link>
+      <guid isPermaLink="true">https://znjxz.github.io/notes/guwen-guanzhi-excerpts.html</guid>
+      <pubDate>2024-10-29T00:00:00+08:00</pubDate>
+      <description>古文摘录</description>
     </item>
 </channel></rss>
