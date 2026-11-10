@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>znjxz · 笔记花园</title>
+<link rel="alternate" type="application/rss+xml" title="笔记花园" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
 <style>
   :root {
     --paper:#faf8f5; --ink:#1f1d1a; --ink-soft:#3d3934; --muted:#8a8279;
-    --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+    --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df; --paper-deep:#f3efe9;
   }
   @media (prefers-color-scheme:dark) {
-    :root { --paper:#1a1917; --ink:#e8e3da; --ink-soft:#c9c3b8;
-            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+    :root { --paper:#1a1917; --ink:#e8e3da; --ink-soft:#c9c3b8; --muted:#8f877c;
+            --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; --paper-deep:#211f1c; }
   }
   *,*::before,*::after{box-sizing:border-box}
   body{
@@ -35,24 +36,29 @@
   header{margin-bottom:1rem}
   .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
            color:var(--gold);margin:0 0 1.5rem;font-weight:500}
-  h1{font-size:2.15rem;font-weight:400;line-height:1.25;letter-spacing:.015em;
-      margin:0 0 .85rem}
+  h1{font-size:2.15rem;font-weight:400;line-height:1.25;letter-spacing:.015em;margin:0 0 .85rem}
   h1 em{font-style:italic;color:var(--ink-soft)}
   .sub{color:var(--muted);font-size:1rem;line-height:1.7;margin:0;max-width:30rem}
   .rule-double{margin:2.75rem 0 0;border:0;border-top:1px solid var(--rule);
                 border-bottom:1px solid var(--rule-soft);height:3px}
+  nav.top{margin:2rem 0 0;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+  nav.top a{color:var(--muted);text-decoration:none;margin-right:1.4rem;
+            border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  nav.top a:hover,nav.top a.on{color:var(--gold);border-color:var(--gold)}
   h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
      color:var(--muted);margin:4rem 0 1.75rem;padding-bottom:.85rem;
      border-bottom:1px solid var(--rule-soft)}
+  h2 .n{color:var(--rule);margin-left:.6rem;letter-spacing:.05em}
   ul{list-style:none;padding:0;margin:0}
   li+li{border-top:1px solid var(--rule-soft)}
   li a{display:block;padding:1.35rem .5rem 1.35rem 0;color:inherit;text-decoration:none;
         transition:padding-left .25s ease}
   li a:hover{padding-left:.55rem}
   li a:hover .t{color:var(--gold)}
-  .t{display:block;font-size:1.15rem;font-weight:500;line-height:1.5;
-      transition:color .25s ease}
+  .t{display:block;font-size:1.15rem;font-weight:500;line-height:1.5;transition:color .25s ease}
   .d{display:block;color:var(--muted);font-size:.95rem;line-height:1.65;margin-top:.4rem}
+  .when{display:block;color:var(--rule);font-size:.72rem;letter-spacing:.16em;
+         text-transform:uppercase;margin-top:.55rem}
   .note{margin-top:1rem;padding:1.9rem 0 0 1.6rem;border-left:1px solid var(--gold);
          font-size:1rem;line-height:1.95;color:var(--ink-soft)}
   .note em{color:var(--muted);font-style:italic}
@@ -60,6 +66,17 @@
           color:var(--muted);font-size:.82rem;letter-spacing:.05em}
   footer p{margin:0}
   footer .sep{color:var(--rule);margin:0 .7rem}
+  /* 搜索 */
+  .searchbox{position:relative;margin:2.5rem 0 0}
+  input[type=search]{
+    width:100%;padding:1rem 1.1rem;font:inherit;font-size:1.05rem;color:var(--ink);
+    background:var(--paper-deep);border:1px solid var(--rule);border-radius:3px;outline:none;
+  }
+  input[type=search]:focus{border-color:var(--gold)}
+  .hint{color:var(--muted);font-size:.85rem;margin:.9rem 0 0;letter-spacing:.03em}
+  .hit{margin:0}
+  .hit mark{background:rgba(200,169,122,.3);color:inherit;padding:.05em .2em;border-radius:2px}
+  .empty{color:var(--muted);padding:2rem 0;font-size:1rem}
   @media (max-width:520px){
     body{font-size:17.5px}
     .wrap{padding:3.5rem 1.3rem 5rem}
@@ -74,44 +91,76 @@
     <h1>znjxz · <em>笔记花园</em></h1>
     <p class="sub">这些笔记还在生长。会改写、会增补，也会删掉当初觉得对的部分。</p>
     <hr class="rule-double">
+    <nav class="top"><a href="/" class="on">首页</a><a href="/archive.html">归档</a><a href="/search.html">搜索</a></nav>
   </header>
-  <h2>笔记</h2>
+  <h2>最近更新</h2>
   <ul>
-    <li><a href="/notes/ai-papers-clipping-2023.html"><span class="t">AI 论文与文章剪藏（2023）</span></a></li>
-    <li><a href="/notes/being-mortal-excerpts.html"><span class="t">《最好的告别》读书摘录（阿图·葛文德）</span></a></li>
-    <li><a href="/notes/chatgpt-singularity-2023.html"><span class="t">ChatGPT 与奇点（2023 思考）</span></a></li>
-    <li><a href="/notes/classic-ta-vol1.html"><span class="t">《经典技术分析》读书摘录·上（柯克帕特里克）</span></a></li>
-    <li><a href="/notes/classic-ta-vol2.html"><span class="t">《经典技术分析》读书摘录·下（柯克帕特里克）</span></a></li>
-    <li><a href="/notes/constant-probability.html"><span class="t">那条被平均出来的概率</span></a></li>
-    <li><a href="/notes/dedao-caiyu-business-ref.html"><span class="t">得到专栏：蔡钰·商业参考</span></a></li>
-    <li><a href="/notes/dedao-comments-competition.html"><span class="t">得到留言精选：竞争共存</span></a></li>
-    <li><a href="/notes/dedao-comments-erliu-trap.html"><span class="t">得到留言精选：二流大国陷阱</span></a></li>
-    <li><a href="/notes/dedao-comments-geopolitics.html"><span class="t">得到留言精选：大国博弈生态</span></a></li>
-    <li><a href="/notes/dedao-comments-quantum-tunnel.html"><span class="t">得到留言精选：量子隧道效应</span></a></li>
-    <li><a href="/notes/dedao-comments-random-control.html"><span class="t">得到留言精选：随机控制</span></a></li>
-    <li><a href="/notes/dedao-comments-story-thinking.html"><span class="t">得到留言精选：故事思维</span></a></li>
-    <li><a href="/notes/dedao-lixiang-knowledge.html"><span class="t">得到专栏：李翔知识内参</span></a></li>
-    <li><a href="/notes/dedao-luopang-selected.html"><span class="t">得到专栏：罗胖精选</span></a></li>
-    <li><a href="/notes/dedao-wangshuo-daxuewen.html"><span class="t">得到专栏：王烁·大学问</span></a></li>
-    <li><a href="/notes/dedao-writing-course.html"><span class="t">得到专栏：写作课</span></a></li>
-    <li><a href="/notes/dedao-wujun-math.html"><span class="t">得到专栏：吴军·数学通识课</span></a></li>
-    <li><a href="/notes/dedao-xuezhaofeng-econ.html"><span class="t">得到专栏：薛兆丰的经济学课</span></a></li>
-    <li><a href="/notes/dedao-zhuoke-science.html"><span class="t">得到专栏：卓克·科学思维课</span></a></li>
-    <li><a href="/notes/dushu-monthly-2022-02.html"><span class="t">杂志剪藏：《读书》月刊 2022年2期</span></a></li>
-    <li><a href="/notes/guwen-guanzhi-excerpts.html"><span class="t">《古文观止》读书摘录</span></a></li>
-    <li><a href="/notes/how-to-make-money-in-stocks.html"><span class="t">《笑傲股市》读书摘录（欧奈尔）</span></a></li>
-    <li><a href="/notes/literature-theory-excerpts.html"><span class="t">《文学概论》读书摘录（余三定）</span></a></li>
-    <li><a href="/notes/military-theory-2023.html"><span class="t">战争论与军事理论摘录（2023）</span></a></li>
-    <li><a href="/notes/ng-chatgpt-prompt-eng.html"><span class="t">吴恩达 ChatGPT 提示工程课程笔记</span></a></li>
-    <li><a href="/notes/reading-and-dedao.html"><span class="t">读书与得到</span></a></li>
-    <li><a href="/notes/sea-power-notes.html"><span class="t">《海权》听书笔记（裴鹏程）</span></a></li>
-    <li><a href="/notes/trade-review-xauusd-gbpusd-2023.html"><span class="t">交易复盘：XAUUSD 与 GBPUSD（2023）</span></a></li>
-    <li><a href="/notes/two-kinds-of-unpredictability.html"><span class="t">两种不可预测</span></a></li>
-    <li><a href="/notes/von-neumann-computer-and-brain.html"><span class="t">冯诺依曼《计算机与人脑》笔记</span></a></li>
-    <li><a href="/notes/yimagazine-drug-price.html"><span class="t">杂志剪藏：第一财经YiMagazine《药价跌落之后》</span></a></li>
-    <li><a href="/notes/读书与得到.html"><span class="t">读书与得到</span></a></li>
+    <li><a href="/notes/reading-and-dedao.html"><span class="t">读书与得到</span><span class="d">读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</span><span class="when">索引 · 2026-11-10</span></a></li>
+    <li><a href="/notes/读书与得到.html"><span class="t">读书与得到</span><span class="d">读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</span><span class="when">其他 · 2026-11-10</span></a></li>
+    <li><a href="/notes/being-mortal-excerpts.html"><span class="t">《最好的告别》读书摘录（阿图·葛文德）</span><span class="d">关于衰老与死亡</span><span class="when">书 · 2024-10-29</span></a></li>
+    <li><a href="/notes/classic-ta-vol1.html"><span class="t">《经典技术分析》读书摘录·上（柯克帕特里克）</span><span class="d">技术分析经典教材上册</span><span class="when">书 · 2024-10-29</span></a></li>
+    <li><a href="/notes/classic-ta-vol2.html"><span class="t">《经典技术分析》读书摘录·下（柯克帕特里克）</span><span class="d">技术分析经典教材下册</span><span class="when">书 · 2024-10-29</span></a></li>
   </ul>
-  <h2>关于这里</h2>
+  <h2>索引<span class="n">1</span></h2>
+  <ul>
+    <li><a href="/notes/reading-and-dedao.html"><span class="t">读书与得到</span><span class="d">读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</span><span class="when">2026-11-10</span></a></li>
+  </ul>
+  <h2>书<span class="n">7</span></h2>
+  <ul>
+    <li><a href="/notes/being-mortal-excerpts.html"><span class="t">《最好的告别》读书摘录（阿图·葛文德）</span><span class="d">关于衰老与死亡</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/classic-ta-vol1.html"><span class="t">《经典技术分析》读书摘录·上（柯克帕特里克）</span><span class="d">技术分析经典教材上册</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/classic-ta-vol2.html"><span class="t">《经典技术分析》读书摘录·下（柯克帕特里克）</span><span class="d">技术分析经典教材下册</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/guwen-guanzhi-excerpts.html"><span class="t">《古文观止》读书摘录</span><span class="d">古文摘录</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/how-to-make-money-in-stocks.html"><span class="t">《笑傲股市》读书摘录（欧奈尔）</span><span class="d">CAN SLIM、盘升形态、高而窄旗形——欧奈尔摘录全本</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/literature-theory-excerpts.html"><span class="t">《文学概论》读书摘录（余三定）</span><span class="d">文学理论</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/sea-power-notes.html"><span class="t">《海权》听书笔记（裴鹏程）</span><span class="d">海权与大国兴衰</span><span class="when">2024-10-29</span></a></li>
+  </ul>
+  <h2>杂志<span class="n">2</span></h2>
+  <ul>
+    <li><a href="/notes/dushu-monthly-2022-02.html"><span class="t">杂志剪藏：《读书》月刊 2022年2期</span><span class="d">《读书》2022年2期</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/yimagazine-drug-price.html"><span class="t">杂志剪藏：第一财经YiMagazine《药价跌落之后》</span><span class="d">2022 年医药定价专题</span><span class="when">2024-10-29</span></a></li>
+  </ul>
+  <h2>得到专栏<span class="n">8</span></h2>
+  <ul>
+    <li><a href="/notes/dedao-caiyu-business-ref.html"><span class="t">得到专栏：蔡钰·商业参考</span><span class="d">理解商业/识别庄股/加密货币/贝壳ACN/矿产/钢铁/沙特减碳</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-lixiang-knowledge.html"><span class="t">得到专栏：李翔知识内参</span><span class="d">原油供应链安全感</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-luopang-selected.html"><span class="t">得到专栏：罗胖精选</span><span class="d">人生战略/厉害的CEO</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-wangshuo-daxuewen.html"><span class="t">得到专栏：王烁·大学问</span><span class="d">撬动群体智慧</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-writing-course.html"><span class="t">得到专栏：写作课</span><span class="d">写作进阶指南（露奇露奇）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-wujun-math.html"><span class="t">得到专栏：吴军·数学通识课</span><span class="d">数学通识问答</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-xuezhaofeng-econ.html"><span class="t">得到专栏：薛兆丰的经济学课</span><span class="d">第 078 讲：股市究竟能不能预测</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-zhuoke-science.html"><span class="t">得到专栏：卓克·科学思维课</span><span class="d">核能/返老还童/肉链/聪明药</span><span class="when">2024-10-29</span></a></li>
+  </ul>
+  <h2>得到留言<span class="n">6</span></h2>
+  <ul>
+    <li><a href="/notes/dedao-comments-competition.html"><span class="t">得到留言精选：竞争共存</span><span class="d">修昔底德陷阱讨论（耶律达石）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-comments-erliu-trap.html"><span class="t">得到留言精选：二流大国陷阱</span><span class="d">自主创新与开放市场（Sencer）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-comments-geopolitics.html"><span class="t">得到留言精选：大国博弈生态</span><span class="d">美国精英层观察（oldxiong）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-comments-quantum-tunnel.html"><span class="t">得到留言精选：量子隧道效应</span><span class="d">冰山理论与科学边界（牧风）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-comments-random-control.html"><span class="t">得到留言精选：随机控制</span><span class="d">数据相关性与因果性（Lina）</span><span class="when">2024-10-29</span></a></li>
+    <li><a href="/notes/dedao-comments-story-thinking.html"><span class="t">得到留言精选：故事思维</span><span class="d">从圈子到组合（左星星）</span><span class="when">2024-10-29</span></a></li>
+  </ul>
+  <h2>2023 主题<span class="n">6</span></h2>
+  <ul>
+    <li><a href="/notes/ai-papers-clipping-2023.html"><span class="t">AI 论文与文章剪藏（2023）</span><span class="d">backprop/Attention/Adam/AI-GAs/MIT TR</span><span class="when">2023-03-01</span></a></li>
+    <li><a href="/notes/chatgpt-singularity-2023.html"><span class="t">ChatGPT 与奇点（2023 思考）</span><span class="d">奇点来临众生相/惠特比 AI 伦理/PID</span><span class="when">2023-03-01</span></a></li>
+    <li><a href="/notes/ng-chatgpt-prompt-eng.html"><span class="t">吴恩达 ChatGPT 提示工程课程笔记</span><span class="d">第 1-9 章</span><span class="when">2023-03-01</span></a></li>
+    <li><a href="/notes/von-neumann-computer-and-brain.html"><span class="t">冯诺依曼《计算机与人脑》笔记</span><span class="d">全文笔记 + 复制自动机/ Jake 附录 PDF</span><span class="when">2023-03-01</span></a></li>
+    <li><a href="/notes/military-theory-2023.html"><span class="t">战争论与军事理论摘录（2023）</span><span class="d">克劳塞维茨/战损率/战争经济学</span><span class="when">2023-02-01</span></a></li>
+    <li><a href="/notes/trade-review-xauusd-gbpusd-2023.html"><span class="t">交易复盘：XAUUSD 与 GBPUSD（2023）</span><span class="d">两张行情截图</span><span class="when">2023-02-01</span></a></li>
+  </ul>
+  <h2>概率 · 判断<span class="n">1</span></h2>
+  <ul>
+    <li><a href="/notes/constant-probability.html"><span class="t">那条被平均出来的概率</span><span class="d">关于概率的两个需要注意的假设一是恒定概率假设二是独立假设。这个两假设需要小心的求证。 恒定概率，假设是说，第1个统计时间范围内的概率之后的概率会一直保持不变。 第2个独立假设指的是…</span><span class="when">2023-05-13</span></a></li>
+  </ul>
+  <h2>不确定性 · 判断<span class="n">1</span></h2>
+  <ul>
+    <li><a href="/notes/two-kinds-of-unpredictability.html"><span class="t">两种不可预测</span><span class="d">从混沌科学的视角来看: 是在确定性系统中看似随机的无规律行为。由于确定性的规律，短期内可以预测，又因为蝴蝶效应的不可预测性，长期是无法预测的。 以上这种看法，本质上还是认为存在确定…</span><span class="when">2023-05-13</span></a></li>
+  </ul>
+  <h2>其他<span class="n">1</span></h2>
+  <ul>
+    <li><a href="/notes/读书与得到.html"><span class="t">读书与得到</span><span class="d">读书与得到 整理自印象笔记导出（2022 与 2023 两批）。原导出保留在 2022年及之前印象笔记导出 与 2023印象笔记导出 ，这里按来源拆开：书按本、杂志按期、得到按专栏…</span><span class="when">2026-11-10</span></a></li>
+  </ul>  <h2>关于这里</h2>
   <div class="note">
     这不是博客。<br>
     博客按日期发布，写完就不再变动；<br>
