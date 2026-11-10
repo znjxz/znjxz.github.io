@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《经典技术分析》读书摘录·上（柯克帕特里克） · znjxz</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">book</p>
+  <h1>《经典技术分析》读书摘录·上（柯克帕特里克）</h1>
+  <p class="meta">2024-10-29 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="_1">《经典技术分析》读书摘录·上（柯克帕特里克）</h1>
+<blockquote>
+<p>整理自印象笔记导出（得到 App 摘录，2022 年及之前）。原始导出：<span class="wikilink-unpublished">2022年及之前印象笔记导出</span></p>
+</blockquote>
+<h2 id="3">经典技术分析（原书第3版）（上）</h2>
+<p>2021-04-26 18:16:05</p>
+<p>从理论上讲，加上或减去两倍标准差，相当于价格围绕移动平均线总的波动范围的95％。但实际情况并非如此，因为价格行为并非静态和随机的，因此不一定完全遵循以标准差计算的统计学特征</p>
+<p>2021-04-26 18:15:15</p>
+<p>在算术移动平均线上方加入两倍标准差来绘制波幅通道上边界。</p>
+<p>2021-04-26 18:14:10</p>
+<p>它们没法跟随着价格潜在趋势和波动变化来调整。</p>
+<p>2021-04-26 18:13:59</p>
+<p>固定</p>
+<p>2021-04-26 18:13:42</p>
+<p>使用的百分比应该足够大，当市场处于盘整阶段时，能够涵盖价格在移动平均线附近震荡的大多数状态，从而最大限度地减少错误信号</p>
+<p>2021-04-26 17:39:03</p>
+<p>一旦确认了趋势，接下来最好的办法就是使用价格形态和趋势方向的突破来确定进场的时机。这种方法对于价格趋势中重大的底部和顶部的发现往往具有滞后性，但是可以带来很多利润，承担的风险也最小。</p>
+<p>2021-04-26 17:38:09</p>
+<p>移动平均线最常用于确定趋势。</p>
+<p>2021-04-26 17:33:34</p>
+<p>根据移动平均线交叉判定信号进行交易，不可能完全杜绝这一问题，虽然利用这种方法长期来看能够盈利。必须提醒投资者的是，要具备足够的耐心和资金实力，在趋势明朗前，需要承受一系列小额度的损失。</p>
+<p>2021-04-26 17:24:18</p>
+<p>移动平均线是一个信手拈来的确认跟踪止损点的方法，进而判定清仓或减仓的时机。</p>
+<p>2021-04-26 16:25:20</p>
+<p>移动平均线可以用来代表趋势线，来确定趋势可能发生转向的时机，这和趋势线一样。</p>
+<p>2021-04-26 16:24:31</p>
+<p>移动平均线是评估趋势的一种方法，最常见的用途是在特定的投资和交易时段内比较价格信息和移动平均线。</p>
+<p>2021-04-26 15:49:15</p>
+<p>多数成功利用移动平均线进行投资的策略，往往是利用长期移动平均线作为确定趋势的主要因素，同时使用短期移动平均线用做跟踪止损点来确认信号。在某些情况下，移动平均线可以用来确定趋势，同时使用价格形态确定进场或离场的信号。</p>
+<p>2021-04-26 09:54:30</p>
+<p>在上涨或下跌的过程中，道琼斯工业平均指数的回撤并不遵循上面提到的所有比例。<br />
+因而预测回撤水平常常伴随着风险。评估预期的回撤水平和实际发生的回撤，往往出人意料。</p>
+<p>2021-04-25 14:53:28</p>
+<p>向上突破之前，会出现大成交量和加速上涨的走势，让人们以为股价即将出现爆发性上涨。不管这些假突破是否纯属人为操纵，它们的确常常发生，交易者或投资者如果不能进行自我保护，后果将让他们痛苦不堪。</p>
+<p>2021-04-25 14:51:03</p>
+<p>在突破柱线前一个柱线的低点之下设置一个进场止损点。</p>
+<p>2021-04-25 14:50:05</p>
+<p>专家突破本身是一个可以用于交易的形态。</p>
+<p>2021-04-25 14:10:19</p>
+<p>时间止损点在测试自动交易系统中也很有效果。</p>
+<p>2021-04-25 11:10:25</p>
+<p>这通常是由于缺乏对情况的理性分析和耐心而造成的。</p>
+<p>2021-04-25 10:36:59</p>
+<p>当股票处于盘整区间时，价格如果在交易区间低位的上方略高处开始反弹上涨，然后在阻力位下跌，就说明买家在市场经过一次小幅调整后对交易的信心增强，愿意多投入一些资金购买股票。如果这种购买的倾向伴随着低点的逐渐上升和反弹时成交量的增加，则出现向上突破的概率增加。</p>
+<p>2021-04-24 18:59:14</p>
+<p>观察价格和确定趋势的最简单方法是什么？最简单的方法就是在一系列的价格震荡过程中寻找波峰和谷底。如果当前峰值比先前峰值更高，并且谷底也比之前的谷底更高，那么趋势肯定是上升的。</p>
+<p>2021-04-24 14:46:01</p>
+<p>任何趋势加速迹象都代表了纯粹的投资情绪，因此潜在的反转点即将到来。</p>
+<p>2021-04-24 14:45:35</p>
+<p>价格在11月突破了通道上边沿而不是仍被限制在这个通道内，这个信号表明趋势在加速，正在接近其终点。</p>
+<p>2021-04-24 14:39:00</p>
+<p>日内交易者常会在每日收市的时候平掉头寸，退出市场，因此收盘价是长线交易者确定供求关系的因素，可以用来描绘更长期的趋势线。通过使用收盘价，虚假突破的数量将大大减少。</p>
+<p>2021-04-24 14:31:08</p>
+<p>在趋势反转发生前，最多会出现3条扇形线</p>
+<p>2021-04-24 14:30:49</p>
+<p>趋势线被突破后，并没有明显的趋势反转，之后画出新的趋势线来反映新的支撑位。</p>
+<p>2021-04-23 10:11:18</p>
+<p>大多数情况下，用算术标度绘制价格，当价格位于交易区间20％～40％时，趋势线比较精确。当价格变化幅度较大时，就需要使用对数标度。</p>
+<p>2021-04-23 10:10:38</p>
+<p>通常来说，在长线交易中，投资者按照价格变化百分比来观测图像，而在短线交易中，投资者按照价格变化数量来观测图像。</p>
+<p>2021-04-23 09:12:46</p>
+<p>多数形态是各种趋势线的组合，像战场一样，在战斗结束前，几乎不可能确定谁是赢家。在这种情况下，等待观望比主观臆断更加明智，也更有利可图。</p>
+<p>2021-04-23 08:37:07</p>
+<p>内部小趋势</p>
+<p>2021-04-23 08:35:42</p>
+<p>通道（channel）是指带有倾角的交易区间，包括上涨通道和下跌通道。</p>
+<p>2021-04-23 08:30:11</p>
+<p>大量交易发生和一定时间之前，很难断定价格是在某个区间进行交易的，我们通过事后分析才能发现之前的很多交易机会。</p>
+<p>2021-04-23 08:25:35</p>
+<p>一些交易者会针对支撑位和阻力位之间的反弹进行交易，但这样操作风险较高，而且要求操作成本低，并且需要时刻紧盯价格走势</p>
+<p>2021-04-23 08:25:20</p>
+<p>交易区间是指支撑位和阻力位的价格水平相对靠近的情况</p>
+<p>2021-04-23 08:19:22</p>
+<p>在上涨的市场中，一旦某个高一点的阻力区被突破了，更高一点的阻力区就可以成为下一个价格目标。</p>
+<p>2021-04-23 08:14:44</p>
+<p>如果支撑位或阻力位水平线附近没有其他的水平线，这就是一个独立的支撑位或阻力位。除非伴随着高成交量的特征，否则这些水平线在未来时段一般不可能与支撑区或阻力区具有同样明显的支撑或阻力作用。</p>
+<p>2021-04-20 08:22:40</p>
+<p>2015年4月28日成交量突然增加，这个形态称为向外逆转日（outside reversal day），价格波动区间大而且突破了前高，低点也比前低还低，收盘价接近低点。这些形态发生时不一定要有很高的成交量，但是如果出现了高成交量，这会是一个很好的信号，表明价格已经达到了投机的顶点，未来会出现强劲的阻力。</p>
+<p>2021-04-20 08:20:56</p>
+<p>要查看高成交量买卖行为发生时的股票实际价格，可能需要仔细查对日内交易行为，从而判定多数买卖行为发生的价位。</p>
+<p>2021-04-20 08:20:17</p>
+<p>高成交量交易往往形成重要的反转点。由于这些形态通常发生在人们投资情绪高涨的时候，所以它们显示了市场参与者的恐慌或者投机泡沫。</p>
+<p>2021-04-19 20:02:23</p>
+<p>支撑位和阻力位的概念是，假定未来的价格会在这些既定水平上或者区域内停止，且这些价位代表了人们可以记住的价格的心理障碍或者心理分界线。</p>
+<p>2021-04-19 19:56:15</p>
+<p>高成交量的价格单峰常常用来确定阻力位。成交量较高是投机和市场情绪的标志，特别是如果在该价位上出现大成交量交易之前，曾出现过大幅上涨的情况，那么这个信号就越发明显，此时大卖家进场的价位尚不清楚。</p>
+<p>2021-04-19 11:59:11</p>
+<p>价格朝着某个方向运动，说明市场上的供求不平衡。有些人可能会错误地说成市场上的卖家多于买家，或者买家多于卖家，其实在每笔交易中，都有相等数量的买卖双方，因此在某个时刻买卖双方的数量总是会达到一个短暂的平衡。而造成价格趋势运动的根源是买方或卖方的实力，即他们手上是否有足够多的股票或资金？买卖双方交易的热切程度如何？不管是否合理。他们是否有足够的信息、理由进行交易？促成各自交易行为的情绪是恐惧还是贪婪？</p>
+<p>2021-04-18 22:22:04</p>
+<p>此外，所有的形态都是用来确定一个更长周期的趋势，或提前觉察趋势反转即将发生。形态本身并非明显的交易信号，而是从潜在的和正在变化的趋势中获利的工具。</p>
+<p>2021-04-18 20:32:04</p>
+<p>在证券市场中以最小的风险获取利润，就是我们投资的唯一目标</p>
+<p>2021-04-18 16:46:34</p>
+<p>英雄往往不是胜者，而是牺牲者。进入市场的目的不是为了熨平错误的市场定价，那是央行企图做的事，而且央行还往往事与愿违最终失败。进入市场只是为了盈利。生存下去，不是要成为最对的最优秀的the one,而是要适应现状和变化。除非一个人可以扭转大势。<br />
+盛夏本该炎热，可如果突然严寒飘雪，就应穿上能保暖的羽绒服，而不应说天错了，坚持要穿短袖，这不是疯了就是傻了，穿衣看天气而不看月份节气。本该怎么样不重要，除非能改变天气。<br />
+冥想关注当下，首要之事就是面对现实。<br />
+民主要发挥作用需要人人如龙，否则人多势众的多数人意见不一定对，反而可能是灾难。苏格拉底就是这么死的。反智者占多数的民主国家，占少数的精英会遭到迫害，希腊共和就发生过这事，优秀的人被流放驱逐。<br />
+当真的在这种国家时，如果有能力以少胜多，扭转错误的局面那当然很好，请做个英雄。否则打不过就要加入他们。<br />
+所以世人皆醉我独醒要么是错的，即使是真的，那就更要小心，这种情况没醉也得装醉，最好是装作喝得最醉的那个。内圣外王不矛盾。活下去才有更多可能，才能改善世界。<br />
+市场包括股市就是民主社会，只不过是加权民主，不是一人一票，而是人人根据自己的权重(资金)投票。这个民主社会当然不一定会对，但对错都不重要，社会人要生存就得随大流，顺大势。<br />
+爱叨叨高估低估的人就是爱抬杠的人，底层逻辑就是认为其他人傻，自己更聪明。可是天真无邪的天使眼中没有坏人，恶贯满盈的大坏蛋眼中没有好人，总认为别人傻傻的，往往事实真相是：最傻的那个其实是自己。退潮后，才发现原来就剩自己还在沙滩上扒拉。</p>
+<p>风险与收益之间的关系并不是固定不变的，而是随市场条件改变而变化的。因此，投资者不会去寻求最大收益，因为这样做的代价太大了，而是需要依赖经验和“尽可能准确的猜测”做出投资决定，这难免会让他们受到解释性偏差和行为上的偏差的影响（即情绪造成的影响）。</p>
+<p>2021-04-18 13:55:39</p>
+<p>学术界和某些人习惯性地批评技术分析，似乎认为这是迷信，而实际情况是，那些对有效市场假说（efficient market hypothesis，EMH）抱持的近乎宗教般的信念，已经成了迷信，追随有效市场假说的人不愿意接受大量与该理论相悖的证据。</p>
+<p>2021-04-18 13:54:38</p>
+<p>学术界之所以一直都在争论市场趋势，是因为如果市场价格真的具有趋势的话，会毁掉他们很多理论模型。</p>
+<p>2021-04-18 13:49:09</p>
+<p>不提时间提趋势没有意义。</p>
+<p>我们要讨论的是多长时间的趋势呢？是分析美国大萧条以来的股价走势？还是总结1980年以来的黄金价格走势？抑或是回顾过去一年的道琼斯工业平均指数（DJIA）走势？又或者是默克公司（Merck）的股价上周的变化？从几十年的长期趋势到每分钟变化的短期趋势，趋势有各种不同的时间跨度。</p>
+<p>来自得到App</p>
+<hr />
+<p>[美] 弗兰克·J.法博齐</p>
+<p>2021-05-17 22:31:34</p>
+<p>我们知道，订单流吸引订单流。我们注意到交易会触发更多的交易。</p>
+<p>2021-05-17 22:48:26</p>
+<p>技术分析可能是世界上最古老的一种财务分析形式，其产生至少可以追溯至17世纪。</p>
+<p>2021-05-17 22:54:52</p>
+<p>在美国开始广泛使用价格图表之前，价格和交易量的分析一般要受到交易者观察力和记忆力的限制</p>
+<p>2021-05-17 23:01:43</p>
+<p>他认为价格不会随着趋势一直呈直线发展，相反，价格走势呈现之字形或波浪形，这就形成了所有经典图表模型的基础。</p>
+<p>来自得到App</p>
+<hr />
+<p>唐朝</p>
+<p>2021-04-25 23:37:22</p>
+<p>低于营运资产买进来，以为捡了大便宜。苦苦挣扎之后，最终仍然以远远低于营运资产的价格卖出去。免费获得的机械，卖出去的时候也基本近于免费。</p>
+<p>来自得到App</p>
+<hr />
+<p>[英] 安娜·库林</p>
+<p>2021-05-18 01:33:22</p>
+<p>可能的价格震荡区间</p>
+<p>2021-05-18 01:33:57</p>
+<p>我们预想的价格震荡区间并没有出现，所以我们就会知道这仅仅只是一个向上趋势中的小小的暂停</p>
+<p>2021-05-18 16:59:46</p>
+<p>这群人是跟着情绪交易的，所以每当他们进入一笔交易就会处在弱势的位置，这样就会非常容易被价格波动带来的情绪所控制。</p>
+<p>2021-05-18 17:11:37</p>
+<p>正是因为买家和卖家不断在这个价格区间中买卖交易，才形成了无形的价格屏障，成为进一步走势的阻力位和支撑位，因为在这一价格区间中集中了大量交易者，有的弱势有的强势。</p>
+<p>来自得到App</p>
+<hr />
+<p>[日] 粂原圭太郎</p>
+<p>2021-04-16 23:05:57</p>
+<p>将其内容以“问答”的形式进行录音。<br />
+可以用录音笔，也可以用智能手机的语音备忘录功能。<br />
+先读一遍问题，停顿1拍再读答案。1拍大约3秒左右。这套流程重复录制3次。<br />
+为什么是3次呢，这是因为连续反复多次有利于记忆的固化，如果只录1次，在听的时候，可能会错过一些内容。<br />
+之后听录音的时候，在听完问题后的1拍之内，自己给出答案。</p>
+<p>2021-04-17 16:17:16</p>
+<p>三餐都不宜吃的过饱。注意点一，过多的碳水化合物容易提高血糖水平，从而使人犯困。注意点二，晚上尤其不能吃得太饱，饱腹睡眠会使睡眠质量下降，影响第2天的精力。<br />
+dha,epa.卵磷脂<br />
+柠檬红茶<br />
+下午3点吃点零食。</p>
+<p>改变饮食习惯，提高专注力</p>
+<p>来自得到App</p>
+<hr />
+<p>[美] 小查尔斯·D. 柯克帕特里克</p>
+  </article>
+  <div class="tags"><span>读书笔记</span><span>得到</span><span>可输出</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

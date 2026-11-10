@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>得到专栏：卓克·科学思维课 · znjxz</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">note</p>
+  <h1>得到专栏：卓克·科学思维课</h1>
+  <p class="meta">2024-10-29 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="_1">得到专栏：卓克·科学思维课</h1>
+<blockquote>
+<p>整理自印象笔记导出（得到 App 摘录，2022 年及之前）。原始导出：<span class="wikilink-unpublished">2022年及之前印象笔记导出</span></p>
+</blockquote>
+<h2 id="017-3">017 | 核能3：核安全，总是个隐患</h2>
+<p>2020-11-04 00:42:21</p>
+<p>我的工作是规划选址和规划方案方面的。摘录出部分核电厂选址要求。  </p>
+<p>5.2.14  核电厂周围必须设置非居住区和规划限制区，在规划限制区内不得兴建、扩建大的企业事业单位和生活居住区、大的医院或疗养所、旅游胜地、飞机场和监狱等（见GB 6249）。  </p>
+<p>5.2.16  假想的堆芯裂变产物释放事故用于厂址选择的环境评价。在发生假想的堆芯裂变产物释放事故条件下，非居住区边界处的任何个人在事故发生后8h内，以及在规划限制区边界处的任何个人在事故的整个持续时间内（事故持续期间可取30d），所接受的有效剂量不得大于0.25Sv，甲状腺剂量当量不得大于2.5Sv。在事故的整个持续期间内，在半径80km范围内公众群体接受的集体有效剂量应尽量小于2×104人·Ｓv，集体甲状腺当量剂量应尽量小于2×105人·Ｓv（见GB 6249）。  </p>
+<p>5.7.2 在人口特征和分布方面，厂址与核电厂的组合必须满足：  </p>
+<p>a）核电厂在运行状态下对居民的辐射照射保持在合理可行尽量低的水平。每个厂址的核电厂向环境释放的放射性物质对公众中任何个人造成的有效剂量当量，每年必须小于0.25mSv。  </p>
+<p>b）在事故状态（包括那些可能导致需要采取应急措施的事故状态）下对居民造成的辐射风险低到可接受的水平，并符合5.2.16的规定。  </p>
+<p>对厂址进行全面评价之后，如果证明无法采用适当的措施以满足上述要求时，则必须认为该推荐厂址不适合于建造该拟建核电厂。  </p>
+<p>7.2.1  区域分析  </p>
+<p>l)  距危险设施的距离：离漂移爆炸云源8km～10km、爆炸源5km～10km之内的周围地区应予否定。  </p>
+<p>m) 飞机坠毁：除最大机场外，对其它所有机场以机场为中心距离10km、对航线或起落通道4km 半径范围内的地区应予否定。  </p>
+<p>n) 军事设施：在区域分析时，对厂区30km半径范围内有军事设施或轰炸演习区的地区一般应予否定。  </p>
+<p>o) 人口分布：靠近10万人口以上的城镇的距离小于10km、和/或距百万人口以上大城市的市区发展边界的距离小于40km、和/或人口密度相对高的地区应予否定。  </p>
+<p>GB 6249-2011 核动力厂环境辐射防护规定 （主要相关规范）</p>
+<h2 id="065">065 | 新研究：人类可以返老还童了？</h2>
+<p>2021-01-05 22:50:56</p>
+<p>12月3日《自然》封面的一篇论文《用重编辑技术恢复年轻表观遗传信息和恢复视力》，第一作者是个中国面孔。利用特定因子，使已成熟老化的细胞退回到最初的状态-诱导性多能干细胞。这次是视觉神经，但为其他老化细胞返老还童提供了科学想象空间。 只要有能量就能永生并繁殖，目前只有癌细胞能做到。 问题是，当人类身体细胞能不断返老还童实现肉体永生时，好像有点“癌化”的感觉。 如果是这样，当这样的人类，突破地球，遨游星空，就有点“癌细胞转移”的味道了。宇宙的“癌细胞”？ 这话怎么有种反人类的感觉😅。 我真不是。</p>
+<h2 id="066-1">066 | 肉链1：人类吃肉导致的大灭绝</h2>
+<p>2021-01-07 18:38:15</p>
+<p>我看过一本书叫谷物大脑，详细说明了我们人类自祖先时代开始就是肉食动物,主要的能量来源是蛋白质和脂肪。发展出农耕技术之后，食物结构偏向于吃谷物，由此带来了很多健康问题。<br />
+特别是谷物的单位亩产量越高，一种对人体有坏处的特殊成分含量就越高。具体叫什么记不得了，好像是叫粘性物质？某种意义上来说，从道理上是说的通的，因为任何事情都有好的一面和坏的一面。亩产量提高，量是提高了，但是质上面也理应打折扣，任何事情都是有代价的。<br />
+由此推出来的生酮饮食法是否有它的积极之处呢？如果我每天的所有能量都来源于蛋白质和脂肪，是否可行？</p>
+<h2 id="248">248 | 聪明药：到底能不能吃？</h2>
+<p>2021-10-15 17:18:11</p>
+<p>卓老板你好，网上看到某产品所说的Neurofactor神经因子可以提高脑内BDNF水平 和“SHARP PS”智能营养素。这两个成分有用吗？</p>
+<p>来自得到App</p>
+<hr />
+<p>[美] 约翰·利兰</p>
+<p>2020-11-29 08:38:41</p>
+<p>这里有没有可能是一种幸存者偏差。更悲观，更不幸福的人很难幸存到高寿阶段，老年人更幸福，只不过是因为。更容易体会到幸福的人容易长寿，他们幸存了下来。</p>
+<p>关于变老的好消息是：与年轻人相比，老人自认为幸福感较强而负面情绪较少。这种幸福感不断增加，直到70多岁的某个时间点才开始逐渐减少，但在90岁时仍能保持比20岁时更高的水平。尽管我们把青少年和青壮年时期理想化，但与年轻人相比，老人的满足感较强，担心和忧虑较少，不那么惧怕死亡，更容易看到事物好的一面，并坦然接受坏的一面。</p>
+<p>来自得到App</p>
+<hr />
+<p>[英] 安迪·普迪科姆</p>
+<p>2020-10-17 12:31:30</p>
+<p>不以物喜不以己悲，宠辱不惊。</p>
+<p>持久的快乐和头脑空间并不取决于目标的实现</p>
+<p>2020-10-17 17:28:19</p>
+<p>减少阿兹海默症的概率。</p>
+<p>一般会随着衰老而来的大脑灰质减少情况真的被冥想效应抵消了。</p>
+<p>2020-10-17 17:35:02</p>
+<p>冥想的最佳时间是早上醒来的第一</p>
+<p>2020-10-17 17:41:09</p>
+<p>冥想会改变脑回路，并且能打开脑洞。</p>
+<p>甚至这种体验在冥想者看来是积极的还是消极的并</p>
+<p>来自得到App</p>
+<hr />
+<p>薛兆丰</p>
+<h2 id="066-1_1">066 | 肉链1：人类吃肉导致的大灭绝</h2>
+<p>2021-01-07 18:25:11   作者：不回白驼山</p>
+<p>卓克老师文中提到：用能量去核算一件事，是一种很扎实的思维方式。<br />
+吴军老师在《科技史纲60讲》中也提到：<br />
+判断一个文明的先进，一个技术的可行性，从能量视角都是一个非常有效的方式。<br />
+例如：在能量的转化效率上，垄耕种植法帮助中华文明走在了前面。</p>
+<h2 id="065_1">065 | 新研究：人类可以返老还童了？</h2>
+<p>2021-01-05 19:55:18   作者：孟旭东13598056773</p>
+<p>好像大概25亿次左右吧。</p>
+<p>我一个朋友，微胖，24岁，头疼，前两天去看医生，医生说他焦虑、心跳快，活不长……<br />
+我说医生扯淡，不用听他的<br />
+请问人的心跳一辈子跳多少下，跳的快的活不长，这有科学依据吗</p>
+<p>2020-12-31 21:52:11   作者：一韦</p>
+<p>关于10%。  </p>
+<p>一个产品，刚开始不少人使用，慢慢的人会越来越少，直到10%。他们开始离不开它。  </p>
+<p>一款服务，解决一类人的需求，慢慢的人会陆续离开，直到10%。他们甚至逢人赞它。  </p>
+<p>流行歌，经典剧，解忧曲，感人剧，终敌不过时间，九牛一毛，有趣的是总有一毛。  </p>
+<p>总有10%人会被吸引，还自我发展了意义。大千世界，你也一样。总会有那么些10%就在那里，不多不少。</p>
+<h2 id="248_1">248 | 聪明药：到底能不能吃？</h2>
+<p>2021-10-15 17:18:11</p>
+<p>卓老板你好，网上看到某产品所说的Neurofactor神经因子可以提高脑内BDNF水平 和“SHARP PS”智能营养素。这两个成分有用吗？</p>
+<h2 id="017-3_1">017 | 核能3：核安全，总是个隐患</h2>
+<p>2020-11-04 00:42:21</p>
+<p>我的工作是规划选址和规划方案方面的。摘录出部分核电厂选址要求。  </p>
+<p>5.2.14  核电厂周围必须设置非居住区和规划限制区，在规划限制区内不得兴建、扩建大的企业事业单位和生活居住区、大的医院或疗养所、旅游胜地、飞机场和监狱等（见GB 6249）。  </p>
+<p>5.2.16  假想的堆芯裂变产物释放事故用于厂址选择的环境评价。在发生假想的堆芯裂变产物释放事故条件下，非居住区边界处的任何个人在事故发生后8h内，以及在规划限制区边界处的任何个人在事故的整个持续时间内（事故持续期间可取30d），所接受的有效剂量不得大于0.25Sv，甲状腺剂量当量不得大于2.5Sv。在事故的整个持续期间内，在半径80km范围内公众群体接受的集体有效剂量应尽量小于2×104人·Ｓv，集体甲状腺当量剂量应尽量小于2×105人·Ｓv（见GB 6249）。  </p>
+<p>5.7.2 在人口特征和分布方面，厂址与核电厂的组合必须满足：  </p>
+<p>a）核电厂在运行状态下对居民的辐射照射保持在合理可行尽量低的水平。每个厂址的核电厂向环境释放的放射性物质对公众中任何个人造成的有效剂量当量，每年必须小于0.25mSv。  </p>
+<p>b）在事故状态（包括那些可能导致需要采取应急措施的事故状态）下对居民造成的辐射风险低到可接受的水平，并符合5.2.16的规定。  </p>
+<p>对厂址进行全面评价之后，如果证明无法采用适当的措施以满足上述要求时，则必须认为该推荐厂址不适合于建造该拟建核电厂。  </p>
+<p>7.2.1  区域分析  </p>
+<p>l)  距危险设施的距离：离漂移爆炸云源8km～10km、爆炸源5km～10km之内的周围地区应予否定。  </p>
+<p>m) 飞机坠毁：除最大机场外，对其它所有机场以机场为中心距离10km、对航线或起落通道4km 半径范围内的地区应予否定。  </p>
+<p>n) 军事设施：在区域分析时，对厂区30km半径范围内有军事设施或轰炸演习区的地区一般应予否定。  </p>
+<p>o) 人口分布：靠近10万人口以上的城镇的距离小于10km、和/或距百万人口以上大城市的市区发展边界的距离小于40km、和/或人口密度相对高的地区应予否定。  </p>
+<p>GB 6249-2011 核动力厂环境辐射防护规定 （主要相关规范）</p>
+<p>来自得到App</p>
+<hr />
+<p>[日] 松浦弥太郎</p>
+<p>2022-06-04 20:47:25</p>
+<p>色川武大先生在随笔《背面人生录》中讲道：“我认为，获得压倒性的胜利对自己无益。因为压倒性的胜利最终往往会招致压倒性的失败。即使是在人际关系上，永远保持八胜七败、九胜六败这种状态，才是最理想的。”</p>
+<p>2022-06-04 21:06:02</p>
+<p>前些日子，我读了外山滋比古先生撰写的一本书，书名叫作《思考是怎么一回事》。外山滋比古先生在书里说，知识和思考是合不来的，有了丰富知识的人，就会很容易认为没有必要去做思考这么麻烦的事。而没有知识的人，反而会迫于形势逼着自己思考。我想，正是这本书给了我现在写作这篇文章的灵感吧。书里说得很对。了解事物已经很困难了，而思考事物则更麻烦、更困难。唉，我现在也反省了自己的言行和过往。年轻的时候，我为了逃避更加麻烦的思考，花了太多太多的功夫在了解上。这是多么失衡呀！外山先生在书里也提到了协调知识与思考的方法，不过，像我这种学术不精的人，恐怕还走不到那一步，所以就不去考虑这些了。现在的我就像一个婴儿一样，刚刚从为了了解而忙碌的状态脱离出来，正不断地在思考的道路上蹒跚前行。所以，我以后的目标就是达到一种了解与思考的平衡。到了现在这个年纪，我想成为的不是无所不知的人，而是能够自由、乐观地进行思考的人。</p>
+<p>来自得到App</p>
+<hr />
+<p>《21世纪商业评论》</p>
+<p>2022-06-02 09:02:52</p>
+<p>职场反操控  </p>
+<p>该说“不”，就说“不”。<br />
+撰文 郑雪 编辑 谭璐<br />
+职场操控，也就是我们常说的职场PUA，是指在工作场所中用各种不公平的、心怀诡计的手段对员工进行心理操控以达到自己目的的一些行为。职场操控属于职场辱虐的一种。<br />
+智联招聘在2020年收集了8062份问卷，统计发现63.65%的白领报告自己经历过职场操控，并且在商业服务行业和金融业中超过70%的白领认为遭遇过职场操控。<br />
+2021年，组织行为学家Dhanani等人总结了来自62个国家的500多篇研究论文发现，几乎每3个人中就有1个人经历过职场操控或者辱虐。该研究同时指出，职场操控会导致很高比率的人员流失和误工，每年全球公司因此而产生的损失高达1万亿美元。<br />
+三类垃圾人  </p>
+<p>组织行为学和心理学中有关职场操控的研究表明，具备暗黑型三大人格的人，在职场中有更高的概率去PUA他们的下属、同事或领导。这种人就是我们俗称的职场“垃圾人”。<br />
+加拿大的两位心理学家Delroy Paulhus和Kevin Williams提出了三种类型的暗黑人格：自恋型人格、权术主义人格和精神变态。<br />
+○自恋型人格。  </p>
+<p>具备自恋型人格的人需要被持续地关注和仰慕，并且他们觉得自己是宇宙的中心。因此，他们认为自己身边所发生的一切，周围人所说的和所做的事情，都应该是关于他的。自恋型人格者喜欢通过操控别人来取得自己的愉悦感。现实中很多人其实都有自恋倾向。<br />
+很多名人，比如特朗普就是典型的自恋型人格，他在公开演讲中主题都是围绕自己展开；金·卡戴珊也是典型的自恋型人格。企业家中也有非常多人是自恋型人格，学者们针对自恋型人格的企业家做了很多研究。Cydney Posner和他的同事对179位CEO进行性格测试之后发现，CEO中自恋型人格占比高达18%。<br />
+○权术主义人格。  </p>
+<p>权术主义人格者为了达到自己的目的会不择手段，甚至无视规则和道德，他们看重结果过于过程，在取得成功之后，也并不会感到负罪感。与自恋型人格者不同，权术主义人格者会更享受成为幕后黑手；相比于变有钱，他们更想要掌握更多的权势。<br />
+○精神变态。  </p>
+<p>精神变态者在最初接触的时候会被认为非常具有个人魅力，但是一旦深交，他们其实非常冷漠无情，也缺乏共情能力、羞耻或内疚等情绪，同时也非常地冲动。精神变态是暗黑人格中最危险的一种。<br />
+Nathan Brooks等学者在调研了261位企业高管之后发现，21%的高管有非常明显的精神变态特征。换句话说，每5个老板中就有一个是精神变态。这个比例甚至超出监狱中犯人精神变态的比例。<br />
+来自西安大略大学的学者Christopher Marcin Kowalski对858个被试者进行了调查，发现自恋的人更喜欢艺术类的职业。学者周一通过研究艺术家签名的大小发现，越自恋（个人签名越大）的艺术家，作品越有可能被卖出更高的价格。<br />
+Jonason等学者对419名被试者进行调查之后发现，自恋型人格者更喜欢用“软招数”来操控人（比如个人魅力、开玩笑、利益交换、奉承）。权术主义人格和精神变态者则更喜欢使用较为强硬的方式来操控他人，比如威胁别人可能会丢工作、打击别人的自信等。<br />
+曾被称为女版乔布斯的Elizabeth Holmes从斯坦福大学辍学并创办了一家研发血液检测技术的公司——Theranos。她宣称研发出一种新型的仪器和技术，只要一滴血就可以检测出200多种疾病，Theranos在2014年的估值高达90亿美元。<br />
+其实Theranos的仪器只能进行15种常规检测，也没有进行任何新技术的研发。这位典型的具备暗黑三大人格的女商人，通过各种软硬策略操控了诸多经验丰富的投资者和董事会成员，最后谎言被戳破，其实就是一出心理操控的典型例子。<br />
+避免PUA  </p>
+<p>我们发现，具备暗黑三大人格的人和在企业中拥有绝对权力的人，更容易去操控和虐待他人。那么我们要如何避免被职场操控，甚至给予反击呢？<br />
+○员工要保护自己不受PUA伤害  </p>
+<p>第一，请设置好自己的底线，当同事或领导提出超出底线范围的要求时，勇敢说“不”。“三明治”方法是一种很好的“说不”的方式：首先肯定对方，然后明确表达自己的困难、无法帮忙，最后告诉他一些可能的解决路径。<br />
+第二，当发现自己的领导或同事有可能具备暗黑三大人格时，为了保护自己，一定要注意证据的收集，包括往来邮件、微信消息等。<br />
+第三，当你决定和辱虐你的领导或同事正面对峙时，请一定记得要有第三方在场。<br />
+最后，集结所有的受害者。辱虐你的领导或同事并不会只针对单个人进行职场PUA，往往有很多的受害者，那么集合群体的力量可以更有效地对抗职场PUA。<br />
+要知道具有暗黑三大人格的人不会改变自己的行为，尤其是精神变态型的同事或老板。如果以上四种方法都不奏效，你需要及时止损，离开现在的工作岗位，去寻求新的工作，不要幻想可以去改变你的领导。<br />
+○领导不能滥用权力PUA员工  </p>
+<p>笔者的研究显示，领导操</p>
+<p>来自得到App</p>
+<hr />
+<p>[美] 亚伯拉罕·马斯洛</p>
+<p>2022-05-17 10:27:55</p>
+<p>哲学体系的混乱是产生怀疑论的主要原因之一。过去如此，现在亦然。历史上，人们普遍认为，哲学存在着各种各样的体系。然而，与此同时，每一种体系又都声称自己掌握了普遍真理。于是，便产生了矛盾。这一矛盾比任何系统的论证都更为有效地支持了怀疑论的观点。过去，哲学体系林林总总，如今，更是纷繁芜杂。从古至今，各种体系相互排斥，争论不休。</p>
+<p>2022-05-17 10:29:19</p>
+<p>最后，对原始社会的研究在自然科学的进化理论和新近获得的与各国政治、宗教、法律、语言和文学发展有关的历史知识之间架起了一座桥梁。只有这样，进化论才能始终如一地应用于对人的整个自然和历史发展的研究中去。也只有这样，有关“典型人”的陈旧概念才能被抛弃，才能纳入进化的过程之中。<br />
+由上述方式形成的进化论必然与承认每一种生活方式都有其历史相对性的观念联系在一起。一种包含整个地球和人类历史的观点不可能对任何形式的生活、宪法、宗教或哲学做出准确的诠释。因此，历史意识的出现比对矛盾体系的全面考察更能彻底打破企图依靠某种哲学或通过各种概念的相互联系来武断解释世界的观念。哲学应该从人类自身（而不是外部世界）去寻求宇宙内部运动的奥秘。现代人的愿望就是去把握人类生活的意义。历史上所有试图揭秘宇宙秩序的哲学体系显然都是同当时的生活相联系的，而各种各样的哲学体系恰恰是生活最重要、最有益的创造之一。因此，尽管历史意识的逐渐出现对伟大的哲学体系及其影响有着巨大的破坏作用，然而，它仍将有助于我们去调和各个体系对普遍真理的主张与哲学体系混乱这一历史事实之间的固有矛盾。</p>
+<p>来自得到App</p>
+<hr />
+<p>罗振宇</p>
+  </article>
+  <div class="tags"><span>得到</span><span>专栏摘录</span><span>可输出</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

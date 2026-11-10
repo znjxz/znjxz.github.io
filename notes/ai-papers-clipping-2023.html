@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 论文与文章剪藏（2023） · znjxz</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">reference</p>
+  <h1>AI 论文与文章剪藏（2023）</h1>
+  <p class="meta">2023-03-01 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="ai-2023">AI 论文与文章剪藏（2023）</h1>
+<blockquote>
+<p>整理自印象笔记导出（2023）。原始导出：<span class="wikilink-unpublished">2023印象笔记导出</span></p>
+</blockquote>
+<p>→ <a href="../2023/2023印象笔记导出/Evernote_files/Learning representations by back-propagating errors.pdf">2023 导出 PDF 附件</a></p>
+<p>Title: Learning Representations by Back-propagating Errors</p>
+<p>Authors: David E. Rumelhart, Geoffrey E. Hinton, and Ronald J. Williams</p>
+<p>Year: 1986</p>
+<p>Summary:</p>
+<p>In this seminal paper, Rumelhart, Hinton, and Williams introduced the backpropagation algorithm, which is a widely-used method for training multi-layer artificial neural networks. The backpropagation algorithm computes gradients of an error function with respect to each weight by propagating the error gradient backwards through the network, from the output layer to the input layer. This approach allows for efficient computation of the gradients, enabling the optimization of the weights using gradient descent or other optimization methods.</p>
+<p>The authors demonstrated the utility of backpropagation by training multi-layer perceptrons to perform several tasks, such as encoding and decoding binary representations, learning the exclusive-or (XOR) function, and approximating continuous functions. They showed that multi-layer perceptrons can learn complex, non-linear relationships between inputs and outputs, and that backpropagation is an effective way to train these networks.</p>
+<p>In addition to presenting the backpropagation algorithm, the authors discussed several important concepts related to neural networks, including the role of hidden units, the choice of activation functions, and the importance of weight initialization. They also addressed the issue of local minima in the error function and provided some preliminary ideas for overcoming this problem.</p>
+<p>In conclusion, the paper by Rumelhart, Hinton, and Williams is a groundbreaking work that introduced the backpropagation algorithm and laid the foundation for modern deep learning methods. Their work demonstrated the power and versatility of multi-layer neural networks and showed how these networks can learn complex representations of data.</p>
+<p>在这篇开创性的论文中，Rumelhart、Hinton和Williams介绍了反向传播算法，这是一种广泛用于训练多层人工神经网络的方法。逆向传播算法通过网络向后传播误差梯度，从输出层到输入层，计算每个权重的误差函数梯度。这种方法允许有效地计算梯度，从而能够使用梯度下降法或其他优化方法对权重进行优化。</p>
+<p>作者通过训练多层感知器来执行一些任务，如编码和解码二进制表示，学习排他性或（XOR）函数，以及逼近连续函数，证明了反向传播的效用。他们表明，多层感知器可以学习输入和输出之间复杂的非线性关系，而且反向传播是训练这些网络的一种有效方法。</p>
+<p>除了介绍反向传播算法外，作者还讨论了与神经网络有关的几个重要概念，包括隐藏单元的作用、激活函数的选择和权重初始化的重要性。他们还讨论了误差函数中的局部最小值问题，并提供了一些克服这一问题的初步想法。</p>
+<p>总之，Rumelhart、Hinton和Williams的论文是一项开创性的工作，引入了反向传播算法，为现代深度学习方法奠定了基础。他们的工作展示了多层神经网络的力量和多功能性，并展示了这些网络如何学习数据的复杂表征。</p>
+<p>other：</p>
+<p>虽然反向传播误差算法（Backpropagation）在训练神经网络时非常有效，但它并不是人脑学习过程的真实模型。反向传播算法是一种优化方法，用于计算神经网络中权重和偏置的梯度，以便调整这些参数以减小损失。尽管这种方法在训练人工神经网络时表现出色，但目前还没有证据表明人脑在学习过程中使用了类似的算法。</p>
+<p>人脑的学习过程更加复杂，涉及到多种生物学机制，如突触可塑性、神经元生成和神经元间的竞争。突触可塑性，尤其是长时程增强（LTP）和长时程抑制（LTD），是大脑学习的基础，它涉及到神经元之间突触连接强度的调整。这种调整受到多种神经递质、信号通路和环境因素的影响。</p>
+<p>尽管反向传播算法和大脑学习机制之间存在一定的相似性，如都涉及调整连接权重以改善性能，但它们的具体实现和原理存在显著差异。目前，科学家们正在研究更贴近生物学原理的学习算法，如脉冲神经网络（Spiking Neural Networks）和赫布学习规则（Hebbian Learning），以期更好地模拟大脑学习过程。</p>
+<p>综上所述，虽然反向传播算法在训练神经网络方面非常有效，但它并不是人脑学习的真实模型。人脑的学习过程涉及更加复杂的生物学机制。</p>
+<p>脉冲神经网络（Spiking Neural Networks，SNNs）和赫布学习规则（Hebbian Learning）分别是由不同的研究者提出的。</p>
+<ol>
+<li>
+<p>脉冲神经网络（Spiking Neural Networks）：脉冲神经网络是一种生物学上更接近的神经网络模型，模拟了神经元如何通过脉冲（或称为“动作电位”）进行通信。脉冲神经网络的概念并没有一个特定的创始人，而是由多个研究者在20世纪90年代逐渐发展起来的。其中，一篇具有代表性的论文是 Maass（1997）发表的 "Networks of spiking neurons: The third generation of neural network models"。这篇论文详细介绍了脉冲神经网络的基本原理和理论框架。</p>
+</li>
+<li>
+<p>赫布学习规则（Hebbian Learning）：赫布学习规则是由加拿大心理学家唐纳德·赫布（Donald O. Hebb）于1949年在其著作《The Organization of Behavior》中提出的。赫布学习规则的基本思想是：“如果两个神经元之间的连接使它们同时激活，那么这两个神经元之间的连接强度将增加。” 这个观点后来被总结为：“共同激活的神经元之间的连接将增强。” 赫布学习规则被认为是一种无监督学习方法，因为它不需要外部的错误信号或反馈来进行学习。</p>
+</li>
+<li>
+<p>玻尔兹曼机：玻尔兹曼机是一种使用模拟退火来学习连接权重的随机循环神经网络。它们基于统计力学原理，比确定性网络更符合生物学，因为它们包含了生物神经系统的噪声和随机性。</p>
+</li>
+<li>
+<p>玻尔兹曼机：玻尔兹曼机是由Geoffrey Hinton和Terry Sejnowski于1983年提出的概念。它们的代表性开创论文是：“Optimal Perceptual Inference”，发表于1983年。然而，这篇论文的重点是受限玻尔兹曼机（Restricted Boltzmann Machine，RBM），这是一种特殊类型的玻尔兹曼机，后来在深度学习领域变得非常流行。请注意，原始的玻尔兹曼机并没有一个特定的开创性论文，因为它们是基于一系列早期研究的结果而发展起来的。</p>
+</li>
+<li>
+<p>液态机器（LSMs）和回声状态网络（ESNs）：LSMs和ESNs是一种利用水库计算概念的循环神经网络。它们由一个大的、随机连接的固定权重神经元水库组成，后面是一个可训练的输出层。水库捕获输入信号的时间动态并生成一个高维表示，可以通过输出层进行学习。由于LSMs和ESNs能够捕捉生物系统的复杂动态，因此它们被认为更接近人脑的学习机制。</p>
+</li>
+</ol>
+<p>液态机器（LSMs）：液态机器是由Wolfgang Maass、Thomas Natschläger和Henry Markram于2002年提出的概念。他们的代表性开创论文是：“Real-Time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbations”，发表在2002年的《Neural Computation》杂志上。</p>
+<p>回声状态网络（ESNs）：回声状态网络是由Herbert Jaeger于2001年提出的概念。他的代表性开创论文是：“The 'echo state' approach to analysing and training recurrent neural networks”，这篇文章是2001年的一篇技术报告，后来在2002年的一篇文章中进行了详细阐述：“Adaptive Nonlinear System Identification with Echo State Networks”。</p>
+<p>总之，脉冲神经网络的发展是多个研究者的共同贡献，其中 Maass（1997）的论文是一个重要的参考文献。赫布学习规则则是由唐纳德·赫布在其1949年的著作《The Organization of Behavior》中首次提出的。</p>
+<hr />
+<p><a href="https://writings.stephenwolfram.com/2023/03/will-ais-take-all-our-jobs-and-end-human-history-or-not-well-its-complicated/">https://writings.stephenwolfram.com/2023/03/will-ais-take-all-our-jobs-and-end-human-history-or-not-well-its-complicated/</a></p>
+<p>by  stephenwolfram.</p>
+<p>We’ve talked quite a bit about the ultimate future course of AIs, and their relation to us humans. But what about the short term? How today can we prepare for the growing capabilities and uses of AIs? As has been true throughout history, people who use tools tend to do better than those who don’t. Yes, you can go on doing by direct human effort what has now been successfully automated, but except in rare cases you’ll increasingly be left behind. And what’s now emerging is an extremely powerful combination of tools: neural-net-style AI for “immediate human-like tasks”, along with computational language for deeper access to the computational universe and computational knowledge. So what should people do with this? The highest leverage will come from figuring out new possibilities—things that weren’t possible before but have now “come into range” as a result of new capabilities. And as we discussed above, this is a place where we humans are inevitably central contributors—because we’re the ones who must define what we consider has value for us. So what does this mean for education? What’s worth learning now that so much has been automated? I think the fundamental answer is how to think as broadly and deeply as possible—calling on as much knowledge and as many paradigms as possible, and particularly making use of the computational paradigm, and ways of thinking about things that directly connect with what computation can help with. In the course of human history a lot of knowledge has been accumulated. But as ways of thinking have advanced, it’s become unnecessary to learn directly that knowledge in all its detail: instead one can learn things at a higher level, abstracting out many of the specific details. But in the past few decades something fundamentally new has come on the scene: computers and the things they enable. For the first time in history, it’s become realistic to truly automate intellectual tasks. The leverage this provides is completely unprecedented. And we’re only just starting to come to terms with what it means for what and how we should learn. But with all this new power there’s a tendency to think something must be lost. Surely it must still be worth learning all those intricate details—that people in the past worked so hard to figure out—of how to do some mathematical calculation, even though Mathematica has been able to do it automatically for more than a third of a century? And, yes, at the right time it can be interesting to learn those details. But in the effort to understand and best make use of the intellectual achievements of our civilization, it makes much more sense to leverage the automation we have, and treat those calculations just as “building blocks” that can be put together in “finished form” to do whatever it is we want to do. One might think this kind of leveraging of automation would just be important for “practical purposes”, and for applying knowledge in the real world. But actually—as I have personally found repeatedly to great benefit over the decades—it’s also crucial at a conceptual level. Because it’s only through automation that one can get enough examples and experience that one’s able to develop the intuition needed to reach a higher level of understanding. Confronted with the rapidly growing amount of knowledge in the world there’s been a tremendous tendency to assume that people must inevitably become more and more specialized. But with increasing success in the automation of intellectual tasks—and what we might broadly call AI—it becomes clear there’s an alternative: to make more and more use of this automation, so people can operate at a higher level, “integrating” rather than specializing. And in a sense this is the way to make the best use of our human capabilities: to let us concentrate on setting the “strategy” of what we want to do—delegating the details of how to do it to automated systems that can do it better than us. But, by the way, the very fact that there’s an AI that knows how to do something will no doubt make it easier for humans to learn how to do it too. Because—although we don’t yet have the complete story—it seems inevitable that with modern techniques AIs will be able to successfully “learn how people learn”, and effectively present things an AI “knows” in just the right way for any given person to absorb. So what should people actually learn? Learn how to use tools to do things. But also learn what things are out there to do—and learn facts to anchor how you think about those things. A lot of education today is about answering questions. But for the future—with AI in the picture—what’s likely to be more important is to learn how to ask questions, and how to figure out what questions are worth asking. Or, in effect, how to lay out an “intellectual strategy” for what to do. And to be successful at this, what’s going to be important is breadth of knowledge—and clarity of thinking. And when it comes to clarity of thinking, there’s again something new in modern times: the concept of computational thinking. In the past we’ve had things like logic, and mathematics, as ways to structure thinking. But now we have something new: computation. Does that mean everyone should “learn to program” in some traditional programming language? No. Traditional programming languages are about telling computers what to do in their terms. And, yes, lots of humans do this today. But it’s something that’s fundamentally ripe for direct automation (as examples with ChatGPT already show). And what’s important for the long term is something different. It’s to use the computational paradigm as a structured way to think not about the operation of computers, but about both things in the world and abstract things. And crucial to this is having a computational language: a language for expressing things using the computational paradigm. It’s perfectly possible to express simple “everyday things” in plain, unstructured natural language. But to build any kind of serious “conceptual tower” one needs something more structured. And that’s what computational language is about. One can see a rough historical analog in the development of mathematics and mathematical thinking. Up until about half a millennium ago, mathematics basically had to be expressed in natural language. But then came mathematical notation—and from it a more streamlined approach to mathematical thinking, that eventually made possible all the various mathematical sciences. And it’s now the same kind of thing with computational language and the computational paradigm. Except that it’s a much broader story, in which for basically every field or occupation “X” there’s a “computational X” that’s emerging. In a sense the point of computational language (and all my efforts in the development of the Wolfram Language) is to be able to let people get “as automatically as possible” to computational X—and to let people express themselves using the full power of the computational paradigm. Something like ChatGPT provides “human-like AI” in effect by piecing together existing human material (like billions of words of human-written text). But computational language lets one tap directly into computation—and gives the ability to do fundamentally new things, that immediately leverage our human capabilities for defining intellectual strategy. And, yes, while traditional programming is likely to be largely obsoleted by AI, computational language is something that provides a permanent bridge between human thinking and the computational universe: a channel in which the automation is already done in the very design (and implementation) of the language—leaving in a sense an interface directly suitable for humans to learn, and to use as a basis to extend their thinking. But, OK, what about the future of discovery? Will AIs take over from us humans in, for example, “doing science”? I, for one, have used computation (and many things one might think of as AI) as a tool for scientific discovery for nearly half a century. And, yes, many of my discoveries have in effect been “made by computer”. But science is ultimately about connecting things to human understanding. And so far it’s taken a human to knit what the computer finds into the whole web of human intellectual history. One can certainly imagine, though, that an AI—even one rather like ChatGPT—could be quite successful in taking a “raw computational discovery” and “explaining” how it might relate to existing human knowledge. One could also imagine that the AI would be successful at identifying what aspects of some system in the world could be picked out to describe in some formal way. But—as is typical for the process of modeling in general—a key step is to decide “what one cares about”, and in effect in what direction to go in extending one’s science. And this—like so much else—is inevitably tied into the specifics of the goals we humans set ourselves. In the emerging AI world there are plenty of specific skills that won’t make sense for (most) humans to learn—just as today the advance of automation has obsoleted many skills from the past. But—as we’ve discussed—we can expect there to “be a place” for humans. And what’s most important for us humans to learn is in effect how to pick “where next to go”—and where, out of all the infinite possibilities in the computational universe, we should take human civilization.</p>
+<p>我们已经谈了很多关于AI的最终未来发展及其与我们人类的关系。但短期内呢？我们今天如何为AI不断增长的能力和应用做好准备？</p>
+<p>正如历史上一直存在的情况，使用工具的人往往比不使用工具的人做得更好。是的，你可以继续通过直接的人力努力去完成现在已经成功实现自动化的事情，但除了少数情况，你会越来越落后。现在正在涌现出一种非常强大的工具组合：用于“即时类人任务”的神经网络式AI，以及用于深入挖掘计算宇宙和计算知识的计算语言。</p>
+<p>那么人们应该如何应对这个局面？最高的杠杆效应将来自于发现新的可能性——以前不可能实现的事情，但由于新能力的出现而现在已经“进入范围”。正如我们上面讨论过的，这是我们人类不可避免地成为核心贡献者的地方——因为我们是必须为自己确定有价值的事物的人。</p>
+<p>那么这对于教育意味着什么？在如此多的事情已经实现自动化的情况下，现在值得学习什么？我认为根本的答案是尽可能广泛和深入地思考——调用尽可能多的知识和范式，特别是利用计算范式以及与计算可以帮助的事物直接相关的思考方式。</p>
+<p>在人类历史中，积累了大量的知识。但随着思维方式的发展，学习所有详细的知识已经变得不再必要：相反，我们可以在更高的层次上学习知识，抽象出许多具体的细节。但在过去的几十年里，出现了一种根本上的新事物：计算机及其所能实现的事物。</p>
+<p>历史上第一次，真正实现智力任务的自动化成为现实。这种杠杆效应是前所未有的。我们才刚刚开始意识到这对我们应该学什么、如何学习意味着什么。但在拥有如此强大的新能力时，人们往往认为必然会失去一些东西。毕竟，学习所有那些复杂的细节——过去的人们为了弄清楚如何进行某种数学计算而努力探索的细节——即使Mathematica已经能够自动完成超过三分之一个世纪的计算，这仍然值得学习吗？</p>
+<p>是的，在适当的时候学习这些细节是有趣的。但为了理解并充分利用我们文明的智力成果，更有意义的是利用我们拥有的自动化，将这些计算视为可以组合在一起的“构建模块”，以完成我们想要做的任何事情。</p>
+<p>人们可能会认为，这种对自动化的依赖仅对“实际目的”和在现实世界中应用知识很重要。但实际上——正如我在过去几十年里多次亲身经历并从中受益良多——在概念层面上也至关重要。因为只有通过自动化，我们才能获得足够的例子和经验，从而培养达到更高理解层次所需的直觉。</p>
+<p>面对世界知识迅速增长的趋势，人们普遍认为人们必然会变得越来越专业化。但随着智能任务自动化的不断取得成功——以及我们可以广泛称之为AI的发展——我们明白了有另一种选择：充分利用这些自动化，使人们能够在更高层次上运作，“整合”而非专业化。</p>
+<p>从某种意义上说，这是最好地利用我们的人类能力的方式：让我们专注于确定“战略”的方向，将实现细节的任务委托给能够比我们做得更好的自动化系统。顺便说一句，一个AI知道如何做某件事，无疑会使人类更容易学会如何做这件事。因为尽管我们还没有完整的故事，但现代技术使AI能够成功地“学习人类如何学习”，并以适合任何特定人吸收的方式有效地呈现AI“知道”的事物。</p>
+<p>那么人们实际上应该学什么呢？学会如何使用工具去做事。但还要了解有哪些事情可以做，学习事实以便在思考这些事情时有所依据。如今，很多教育都是关于回答问题的。但在未来——有了AI的帮助——学会提问和如何确定哪些问题值得提问可能更为重要。换句话说，如何制定一种“智力策略”。</p>
+<p>为了在这方面取得成功，知识的广度和思考的清晰度非常重要。在思考清晰度方面，现代社会又有了一个新特点：计算思维的概念。在过去，我们拥有逻辑和数学等方式来构建思维结构。但现在我们拥有全新的东西：计算。</p>
+<p>这是否意味着每个人都应该用传统的编程语言“学习编程”？不是的。传统编程语言是关于用计算机的术语告诉计算机如何执行操作。是的，现在很多人在这方面有所成就。但这实际上是一种适合直接自动化的基本任务（正如ChatGPT的示例所显示的那样）。而长期来看，更重要的是使用计算范式作为一种结构化的方式，不仅关心计算机的操作，还关心世界中的事物和抽象事物。</p>
+<p>这其中至关重要的是拥有一种计算语言：一种使用计算范式表达事物的语言。对于简单的“日常事物”，用简单、非结构化的自然语言表示是完全可能的。但要构建任何严肃的“概念塔”，就需要更加结构化的东西。而这就是计算语言的意义所在。</p>
+<p>我们可以在数学和数学思维的发展中找到一个粗略的历史类比。大约在半个世纪前，数学基本上只能用自然语言表达。但随后出现了数学符号——从而发展出了一种更简洁的数学思考方法，最终使各种数学科学成为可能。现在，计算语言和计算范式的情况也是如此。只不过这是一个更广泛的故事，基本上对于每一个领域或职业“X”，都有一个正在崛起的“计算X”。</p>
+<p>从某种意义上说，计算语言（以及我在Wolfram语言开发中的所有努力）的目的是让人们尽可能自动地进入计算X，让人们利用计算范式的全部力量来表达自己。</p>
+<p>像ChatGPT这样的工具通过拼凑现有的人类素材（如数十亿字的人类书写文本）提供了“类人工智能”。但计算语言可以让人们直接接触计算，并赋予人们做基本新事物的能力，这些新事物可以直接利用我们为自己设定价值的人类能力。</p>
+<p>当然，传统编程可能会被AI所取代，但计算语言为人类思维和计算宇宙之间提供了一个永久的桥梁：一个在设计（和实现）语言中已经完成自动化的通道，从某种意义上说，这是一个直接适用于人类学习和用作扩展思维基础的界面。</p>
+<p>那么，关于未来的发现呢？AI会取代我们人类在例如“科学研究”方面的地位吗？我个人已经使用计算（以及许多人可能认为是AI的工具）作为科学发现的工具近半个世纪了。的确，许多发现实际上是“由计算机完成的”。但科学最终是关于将事物与人类理解相连接。到目前为止，还需要一个人来将计算机发现的东西纳入整个人类知识的网。</p>
+<p>当然，人们可以想象，即使是类似于ChatGPT的AI也可以非常成功地将“原始计算发现”与现有人类知识联系起来，并“解释”它们之间的关系。人们还可以想象，AI能成功地确定某个系统中的哪些方面可以用某种形式的方式描述。但是，正如一般建模过程中通常会遇到的问题一样，关键步骤是决定“关心什么”，以及在扩展科学时应该朝哪个方向发展。而这（与许多其他事物一样）不可避免地与我们人类设定的具体目标紧密相连。</p>
+<p>在不断崛起的AI世界中，有许多具体技能对于（大多数）人类来说没有意义——就像今天的自动化技术已经让过去的许多技能过时一样。但是，正如我们已经讨论过的，我们可以期待人类在未来仍然有一席之地。对于我们人类来说，最重要的是学会如何选择“接下来该走哪一步”以及在计算宇宙中的无穷可能性中，我们应该如何引领人类文明。</p>
+<p>总之，为了应对日益智能的AI世界，我们需要调整教育和培训方式，培养广泛的知识和清晰的思维能力。我们应该学会利用计算语言和计算范式来扩展我们的思维能力，同时学会提出问题和寻找有价值的问题。在这个过程中，我们将更好地发挥我们的人类潜力，并在AI的帮助下，推动人类文明的进步。</p>
+<hr />
+<p>→ <a href="../2023/2023印象笔记导出/Evernote_files/1412.6980.pdf">2023 导出 PDF 附件</a></p>
+<hr />
+<ul>
+<li>
+<p>《Adam: A Method for Stochastic Optimization》（亚当：一种随机优化方法），由Diederik P. Kingma和Jimmy Ba于2015年发表在《国际学习表征会议》上，该论文提出了一种很受欢迎的深度学习优化算法——Adam，可以用于翻译、文本归纳、语音识别技术，以及其他涉及序列分析的应用。该论文截至目前被引用了67,514次1。arxiv链接：https://arxiv.org/abs/1412.6980</p>
+</li>
+<li>
+<p>《Deep Residual Learning for Image Recognition》（图像识别的深度残差学习），由微软亚洲研究院的任少卿等人于2016年发表在《IEEE/CVF计算机视觉与模式识别大会论文集》上，该论文提出了一种深度残差网络（ResNet），可以有效地解决深度神经网络训练中的退化问题，并在多个图像识别任务上取得了显著的性能提升。该论文截至目前被引用了49,301次2。arxiv链接：https://arxiv.org/abs/1512.03385</p>
+</li>
+<li>
+<p>《Deep Learning》（深度学习），由加拿大多伦多大学和谷歌公司的Yoshua Bengio、Ian Goodfellow和Aaron Courville等人于2015年发表在《自然》上，该论文是一篇关于深度学习潜力和挑战的开创性综述，介绍了深度学习的基本概念、原理、应用和未来发展方向。该论文截至目前被引用了27,375次3。arxiv链接：https://arxiv.org/abs/1206.5538</p>
+</li>
+<li>
+<p>《Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks》（Faster R-CNN:通过区域候选网络实现实时对象检测），由任少卿等人于2015年发表在《神经信息处理系统》，描述了如今使用最广泛的一种对象检测算法：R-CNN。对象检测是计算机视觉研究的一个主要方向，专门检测图像和视频中的人类、车辆、建筑这类对象。该论文截至目前被引用了19,507次。arxiv链接：https://arxiv.org/abs/1506.01497</p>
+</li>
+<li>
+<p>《Human-level control through deep reinforcement learning》（通过深度强化学习实现人类水平的控制），由谷歌DeepMind团队的Volodymyr Mnih等人于2015年发表在《自然》上，该论文提出了一种基于卷积神经网络和Q-learning算法的深度强化学习方法（DQN），可以从原始像素输入中直接学习控制策略，并在49个雅达利2600游戏中超越或达到人类水平。该论文截至目前被引用了10,394次。arxiv链接：https://www.nature.com/articles/nature14236</p>
+</li>
+<li>
+<p>《Attention Is All You Need》（注意力机制就够了），由谷歌公司的Ashish Vaswani等人于2017年发表在《神经信息处理系统》上，该论文提出了一种基于注意力机制的新型神经网络架构——Transformer，可以有效地解决序列到序列（seq2seq）的任务，如机器翻译、文本摘要等，并在多个基准数据集上刷新了记录。该论文截至目前被引用了16,980次。arxiv链接：https://arxiv.org/abs/1706.03762</p>
+</li>
+<li>
+<p>《Mastering the game of Go with deep neural networks and tree search》（用深度神经网络和树搜索掌握围棋游戏），由谷歌DeepMind团队的David Silver等人于2016年发表在《自然》上，该论文介绍了一种结合深度学习和蒙特卡罗树搜索（MCTS）的方法——AlphaGo，可以在围棋游戏中击败职业选手，并首次实现了超越人类水平的围棋智能体。该论文截至目前被引用了9,621次。arxiv链接：https://www.nature.com/articles/nature16961</p>
+</li>
+<li>
+<p>《Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks》（用深度卷积生成对抗网络进行无监督表示学习），由OpenAI公司的Alec Radford等人于2016年发表在《国际学习表征会议》上，该论文提出了一种深度卷积生成对抗网络（DCGAN），可以在图像生成任务上取得前所未有的效果，并通过可视化分析揭示了隐藏层表示和向量运算之间的关系。该论文截至目前被引用了8,681次。arxiv链接：https://arxiv.org/abs/1511.06434</p>
+</li>
+<li>
+<p>《Semi-Supervised Classification with Graph Convolutional Networks》（用图卷积网络进行半监督分类），由阿姆斯特丹大学和谷歌公司的Thomas Kipf和Max Welling于2017年发表在《国际学习表征会议》上，该论文证明了图卷积网络（GCN）在半监督节点分类任务中性能优越，并提出了一种可扩展、高效、直接操作于图结构数据上的卷积神经网络方法。该论文截至目前被引用了7,021次。arxiv链接：https://arxiv.org/abs/1609.02907</p>
+</li>
+<li>
+<p>《Explaining and Harnessing Adversarial Examples》（解释并利用对抗样本），由谷歌公司和蒙特利尔大学的Ian Goodfellow等人于2015年发表在《国际学习表征会议》上，该论文介绍了快速生成神经网络对抗样本的方法，并引入了对抗训练作为正则化技术。对抗样本是指故意施加微小扰动后导致模型错误分类或输出不正确答案的输入样本。该论文揭示了这一现象背后与模型线性性质相关的原因，并影响了大量后续研究工作。该论文截至目前被引用了6,995次。arxiv链接：https://arxiv.org/abs/1412.6572</p>
+</li>
+</ul>
+<hr />
+<p>→ <a href="../2023/2023印象笔记导出/Evernote_files/AI-GAs AI-generating algorithms, an alternate paradigm for producing general artificial intelligence.pdf">2023 导出 PDF 附件</a></p>
+<hr />
+<p>→ <a href="../2023/2023印象笔记导出/Evernote_files/AI is learning how to create itself _ MIT Technology Review.pdf">2023 导出 PDF 附件</a></p>
+<p>open-ended</p>
+<p>“having no determined limit or boundary” or “allowing the formulation of any answer, rather than a selection from a set of possible answers”</p>
+<p>breakthrough breakthrough is a noun that means “a sudden, dramatic, and important discovery or development” or “an instance of achieving success in a particular sphere or activity”.</p>
+<hr />
+<p>→ <a href="../2023/2023印象笔记导出/Evernote_files/Spiritual Intelligence and the Full Spectrum of Intelligence.pdf">2023 导出 PDF 附件</a></p>
+  </article>
+  <div class="tags"><span>剪藏</span><span>AI</span><span>可输出</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

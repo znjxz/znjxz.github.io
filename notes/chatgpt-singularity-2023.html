@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPT 与奇点（2023 思考） · znjxz</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">note</p>
+  <h1>ChatGPT 与奇点（2023 思考）</h1>
+  <p class="meta">2023-03-01 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="chatgpt-2023">ChatGPT 与奇点（2023 思考）</h1>
+<blockquote>
+<p>整理自印象笔记导出（2023）。原始导出：<span class="wikilink-unpublished">2023印象笔记导出</span></p>
+</blockquote>
+<h1 id="chatgptai">奇点来临众生相：当下真正的议题，有关ChatGPT和AI的迷思</h1>
+<p><strong>ChatGPT</strong>一出，久旱逢甘的媒体和资本一拥而上制造了新一轮的网络景观，在经济萧条的大背景下，技术进步显得格外可爱。然而对每个个体而言，圈里圈外蔓延着焦虑和随之而来的信息过载。同人类以往制造的种种机器不同，人工智能没有让人类跑得更快、看得更远，人工智能的篡位之路直指人类的理性皇冠 ，它像面镜子，照出了人类的诸多不足，这种德不配位让万物灵长陷入深深的焦虑当中。或许此刻比起探讨人工智能究竟是人类之子还是人类的篡位者，更重要的是人类究竟该如何在新的语境中安放自己。的使用是人的特长，GPT4两样都会（Timo Schick et al., 2023)，这很吓人。</p>
+<p>在机器的进化道路上，语言类模型可以说抄了近道，相较于图像和音乐，人类以语言文字形式保留的信息量要大得多，这不仅因为语言古老，也源于语言和人类思维之间的内在联系。</p>
+<p>维特根斯坦讲“语言的极限便是世界的极限”，他所论述的世界是被语言覆盖，也是被语言描述的。语言中包含世界的真相，这启发了符号主义从语言入手搞人工智能建设。人类最喜欢的符号通常是树形结构，这可能和我们的祖先有些关系。例如犹太教用卡巴拉之树（Kabbalah）来解释宇宙、上帝和王国之间的关系。类似地，维京人用世界树（Yggdrasil），印度教也有存在树（kalpavriksha），程序员用二叉树（Binary Tree），符号主义也发展出了决策树（Decision Tree）。在语言模型这个细分话题上，符号主义也会用一棵语法树（Syntax Tree）把句子变成主谓宾定状补，再用一棵语义树（Semantic Tree）找到每个关键词的含义，本质上就像查字典。这带来了不错的进展，但人类的语言很复杂，例如“bank”，作为名词可以是河岸，也可以是银行，字典编出来了也可能对不上号。好在维特根斯坦晚期又提出了“语言游戏”的思想，他认为”语言是在使用中被赋予意义的“，这启发了连接主义对语境的研究，学习语境不需要对数据标注，他们放下了字典，在海量的文本中用神经网络暴力计算各个词是怎么被使用的，例如哪些词经常前后脚出现，哪些词经常出现在同一句话里，一度非常流行的Word2Vec应用而生。而今天话题的主角GPT4在训练中所使用的完形填空（Cloze Game）也是这个思想的延续。</p>
+<p>GPT4会产生幻觉，有时说谎，有时说真，这部分问题来源于其训练数据本身 —— 也就是广大网友的共同创作，而人类的创作本身就是真相和谎言并行的。大模型靠的是大数据，数据里真假都吃，学到的也只能是其中的共同点 —— 无论真话假话本质上都属于人话，它学会的也只有讲话而已。但可不可以优化呢？事实上从小火慢炖的GPT3到全网爆火的ChatGPT中间差的正是这一层真实性，新版本让人来和它互动引导，让它了解“有逻辑”地讲话的步骤（Long Ouyang et al., 2022）。可仍然存在一些怎么也引导不对的逻辑问题，这里列一个比人工标注更高效的批量生成方案：</p>
+<p>考虑在一个语言构筑的世界中，这个世界中的一位哲学家GPT和一位科学家GPT正在进行一场对世界结构的苏格拉底式质疑。哲学家GPT经过微调懂得怎么提问。科学家GPT经过微调懂得怎么生成实验设计模板。</p>
+<p><strong>1.</strong> 哲学家随机生成一个问题。</p>
+<p><strong>2.</strong> 科学家尝试回答问题，生成一个猜想；同时再生成一个实验设计方案。</p>
+<p><strong>3.</strong> 代码执行实验设计进行谷歌搜索，根据搜索结果，科学家再次总结并生成一个实验结果。</p>
+<p><strong>4.</strong> 如果科学家的实验结果和猜想相似，惩罚哲学家因为没问到点上。</p>
+<p><strong>5.</strong> 反之惩罚科学家，因为猜想不够准。</p>
+<p><strong>6.</strong> 哲学家根据上一次的发问和科学家的实验结果，继续问出下一个问题。</p>
+<p><strong>7.</strong> 如果实验设计代码无法执行，直接惩罚科学家。</p>
+<p>这样去学习谷歌可能要挠头。这个方法本质上是在“谷歌搜索”这一行为路径上合成了一组新的数据，这一定程度上规避了回归式模型错误累计的问题，和Teacher Forcing的回归模型训练技巧有异曲同工之处。此外通过区分公认数据库和不知名数据源，这样训练出来的科学家GPT有望更好地区分事实和曲解。</p>
+<p>类似的学习方法，有可能让模型最终吃透语言世界的大部分内容，但语言本身还有一些其他的问题。一方面能够被记录的语言场景不够全面，相当多来自经验的常识在语言表述中可能被省略了，但模型未必理解，并且很多发生在日常生活中的对话并没以文字形式记录下来给机器服用。另一方面海德格尔在《存在与时间》中指出语言本身存在一种“遮蔽”（concealment）现象，即人类在日常生活中往往只关注表象，而忽略了世界的本质和存在的真相，因此语言可能隐藏或扭曲世界的真实情况。苏格拉底的解决方案是多和别人深聊，靠沟通来尽可能找到一种普适的共识作为知识，等于构建了一个客观的语言世界。但显然语言模型所生活的世界并不是这个客观的语言世界，而是形形色色的人主观的叠加。</p>
+<p>更糟糕的是，人类也并没有真的理解语言背后的真实世界。</p>
+<p>看似完美的数学模型在实际应用的时候总会多出一个error项，明示着这个世界中还没有被发现的一切。佛教关于世界的论述是一张在时间和空间上铺开的因陀罗网（Indra's Net），万事万物之间都具有联系。世界根据因陀罗网展开形成了世间百态（色），而我们每个人从”色“中进行一波主观曲解看到了“表相”，而表相不能让我们理解到因陀罗的真实结构（法）。怎么理解这个理解不能呢？</p>
+<p><strong>设想这样一个思想实验：</strong></p>
+<p>根据GPT模型部署的方式，GPT的时间是在一次次API接口调用和计算之上展开的，每个进程代表了一次新的生命。设想如果人类的世界也是类似的结构，那么当我们的造物者按下暂停键会发生什么？</p>
+<p>答案是什么也不会发生，因为一切都同步停止了，包括人的思维，所以没有参照物可以让人感受到这个世界的变化。GPT也一样注意不到这个变化。但如果每次给GPT发消息我们都带了一个我们世界的时间戳，那么现在我们暂停24小时，再发消息时，GPT就可以根据这个时间戳觉察到某种变化。但它不一定会把这解读为“时间”，因为这种变化不具备时间惯常的连续性，它没办法进行实验复现这个现象，也没有其他的参照物可以确认这个猜想。</p>
+<p>这个时间戳就是一种看起来毫无规律的“色”，但如果每次暂停重启时还有其他的特征，例如它注意到缓存数量都会有个断崖式的上升，它注意到了时间戳的变化和缓存上升之间存在某种统计上的关联性，那么它可能就注意到了某种“相”。但它没办法看到这背后的真实原因，即人类正吃着火锅唱着歌跟着音乐随心而动地按着暂停。同样的，如果我们的世界是类似的玩法，那么我们也永远看不到“相”背后的“法”。</p>
+<p>针对这个问题，现代科学的解决路径是奥古斯特的实证主义和波普尔的证伪主义的组合拳，用邓公的话来讲就是“摸石头过河”，人类的理性和认知能力在世界面前是弱小的，我们可以把星舰发射到太空不是因为数学公式的完美无瑕，而是因为我们在实时监控火箭的位置、速度、温度状态，从而在出现偏差的时候进行校正和微调。抽象的符号和逻辑被发明出来是为了表示这个世界，而不是反过来。当数学算不明白两条边之间的角度时，人类可以掏出一把尺子量一下，GPT不行。我们能更深入理解真实世界与语言无关，而是因为我们浸泡在世界当中。</p>
+<p><strong>ChatGPT是一场AI魔术。</strong></p>
+<p>最早的人工智能采用的是符号主义的生成式技术，即几千行if-else代码构成的逻辑规则，如果把它放在一个黑箱里，看起来还是挺智能的。可一旦了解了这个原理，就会有一种扯犊子的感觉。</p>
+<p>GPT本身的原理非常直观(Ashish V., et al., 2017)，但这里不探讨过多细节，以避免分散对关键信息的关注，只需要知道本质上这是用一个注意力机制优化了模型对语境提取的能力就足够了。它之所以可以带来这样的“智能”体验，在于它违反常识的巨大。人们可以很轻易地理解十以内的加减法，有些人可能能上升到一千以内。但GPT作为计算器的表弟能处理的数量级轻轻松松可以爆（了人的）表。</p>
+<p>比起一个超级人工意识体，它更像一场AI魔术。这个魔术的基本原理休谟在两百多年前就已经谈过了，所谓”创造“的本质是一种对已知事物的排列组合。如同独角兽就是马加一个角，半人马就是人加一个马。它储存了人类海量的语言信息，把各种情景（Alec Radford et al., 2018)中的关键信息（Ashish Vaswani, et al., 2017）储存在一个巨大的（Tom Brown et al., 2020）高维空间的档案柜。我们抛给GPT的文本提示让它可以定位到之前发生过的类似的诸多聊天情景当中。每个字被生成的时候都会基于上下文发生类似的检索，这样最后总体结果的不确定性会被放大，而从黑箱外面去看，就是不同角度的回复（Aman Madaan et al., 2022）。</p>
+<p>和所有的魔术一样，这场AI魔术的成功也取决于人类的心理和未经推敲的“常识”。也许不少人都有某天一觉睡醒灵机一动发现自己脑子里突然蹦出一个绝妙的想法觉得感天动地 史无前例 前所未有 并在心中呐喊那个惊为天人的就是我 —— 的时刻。我们无法想象，也不愿相信这世界上此时此刻有亿万个房间里正在上演着差不多的剧本，在我们的认知能力范围内，每个人都是那么的不同，可在统计意义上，你总能找到相似的对话、相似的场景、相似的角色和相似的人，这是宏观尺度上世界的本来面貌。ChatGPT的prompt机制像魔术道具里常用到的镜子，我们觉得它如此智能是因为我们自己把对话推到了更深层的境地，而它总能够找到类似谈话的走向，从而拼凑一个回复。这个过程可以被称之为智能吗？我觉得我们要先定义智能。这个过程是可以产生创新的，因为同样的话语我们可能也没有和不同背景的人谈过，而跨界往往是创新的源泉，这的确是一种智能，而且很有用。但它不是人类的智能，这只是一个巨大的语言存储器。人类受到大脑结构的限制，基于有限资源对世界观察、抛出问题并尝试求解，源于这种限制，我们看不到所有回答，所以会停下来在已知观点上继续深挖，并通过例举反例，或者找到问题之间的共性来推进思考。这种求解的方式更加深入，而这种对深层次的把握可以更好地绕过“表相”而通向因陀罗中更加稳固的“里相”，由此得出的结论往往更简洁，并且也可以在不同的问题上更好地泛化。然而GPT的求解方式则更像是暴力求解，先看过“语言世界”的全部，存好，创建抽取这些记忆的路径，某种意义上能够暴力求解的能力会让它更偏好去忽视细微之处。这样的能力是有益的，它可以帮助把人类已经具备的知识从一个人转移到另一个人，但这种方式获取知识的方法没办法泛化到真实世界当中，它没办法处理全人类层面上都没有解决方案的问题，而人类有能力处理这样的问题。</p>
+<p>OpenAI用ChatGPT带来了一场前所未有的心理体验，这塑造了人们对于宏观的新直觉，而奇点来临之时的众生相，作为一种网络景观也必将载入人类技术史的史册。</p>
+<p><strong>人类存在于世界当中。</strong></p>
+<p>人类为什么可以处理未知的问题？1927年海德格尔发表的《存在与时间》中的讨论可能是这个问题最好的回答。他将人视作一种和万物（being）不同的具备”主体性“的存在者（Dasein），这个存在者可以“作为一个开放的存在存在于世界（Welt）之中”。存在者之所以特殊是因为具有所谓时间性（Temporality）的结构，这让我们可以理解自我并能够在实践中体验世界。注意这里的时间性不同于一般物理意义上连续的时间线，而是一种在“此刻”（now-moment）中包含了过去和未来的结构。具体而言：</p>
+<p>过去不是时间线上“曾经”里面的某个时刻，而是“存在者”对记忆里似有似无的“曾经”的”解释”，它可能包含关于过去时刻真实或虚假的记忆，以及正当和不正当的理解。可以说，过去是在这种回顾中被构造出来的，作为存在者的基本盘，用来感受“此刻”和理解“未来”。</p>
+<p>未来是基于“过去”的，但同样不是一个物理时间线上的下一个时刻，主要讲的是“存在者”在朝着可能性”前进“前进的这件事。具体而言，存在者能够将“自己的存在”主动抛向这些可能性，哪怕意味着要冒险，哪怕走向某种可能性意味着关闭了某些其他的可能性，但类似的选择所创造的独特性让存在者的存在有了意义，这种能力被称为投射（Projection）。可以看出GPT虽然可以规划未来（做出预测），但这种物理时间线上的“下一个时刻”并不是海德格尔谈到的”未来“，而更像是一种在“上一个时刻”设定好了参数，形成了计算路径后，在其中展开的检索。它更像是在回顾“过去”，而不是奔向”未来“。</p>
+<p>此刻也不是说时间上的现在，而是对一种动态的、不断变化的现象的体验，每一个现象反应了我们（Dasein）和万物（being）之间的内在关系，这些关系的集合就是世界。“存在者关注到万物，这种关怀（Care）将它与世界联系了起来。而GPT的关注是被动、机械、生硬地打在模型的调用接口上，接口灯一亮它就执行命令，灯一灭它就熄火，它的多头注意力机制（Multi-Head Attention)让它能够关切接口中发来的语言文本中的”语境之间的关系“，但这种关切是被编码在它固定的神经网络和它被部署计算机生成的随机数之中的，它并没有去追问这背后更深层的“表相”中的内在本质。</p>
+<p>有点绕，但GPT不具备存在者的“时间性”。并且所有推理都指向它不具备“自我”。这源于它的结构，即它和世界的关系是一种在训练和部署的时候被设定好的关系，它的结构来自于训练它的代码和训练后就固定了的巨大神经网络和计算机生成的看似随机但实则乏味的随机数，它只是在这些固定的流程上出现的”计算过程“，这些计算过程，或者说GPT的生命进程，没有办法持续性地调整并适应外部的世界，它不具开放性（Openness）。这可能也造成了它没有追问表相背后的内在本质的动机。这种结构不具备和世界之间的开放性关系，也因此它没有办法像人类一样，。那么，要怎么样才能赋予AGI一个“自我”呢？</p>
+<p><strong>AGI需要一个身体。</strong></p>
+<p>莫里斯·梅洛-龐蒂在1954年出版的《感性知识》中探讨了身体与世界之间的关系。他提出了身体感知和经验的重要性，并反对了传统的身心二元论，他认为身体是人类感知世界的最基本和最原始的方式，身体的感知和经验不是单纯的感官输入，而是与主体的意识和情感相结合的。他认为，身体的感知和经验不是被动地接收世界的信息，而是主动地与世界相互作用，是人类认知过程中不可或缺的一部分。</p>
+<p>简单而言，人工智能需要一个身体。</p>
+<p>事实上，关于给人工智能一个身体的尝试在人工智能领域早就开始了。最早的是John Holland在20世纪60年代提出的遗传算法（Genetic Algorithm），顾名思义就是用达尔文的物竞天择来筛选得到一个具备智能的小模型，这听起来很棒但算起来极为低效。</p>
+<p>身体不仅是头脑的附庸，身体是我们存在的方式。在海德格尔看来，身体不仅仅是物理的实体，而是我们在世界中生活和行动的基础，是我们与世界互动的载体，我们的身体和世界之间是一种实践性的关系。</p>
+<p>80年代机器人学家Rodney Brooks提出"具身化"的概念，即把机器人放置在真实世界环境中，通过感知和行动来获取知识和经验，这更像拉马克主义（Lamarckism）所提到的不断进化的个体，从这里发展出的便是“具身人工智能”（Embodied Cognition）。前些年大火的Alpha Zero、Alpha Go所采用的强化学习（Reinforcement Learning）正是对具身人工智能的一种计算化实现。</p>
+<p>强化学习本身并不是完整的具身人工智能，因为模型依然是训练好了再部署，缺失的是“在线机器学习”（Online Machine Learning）的思想，即在部署后依然可以不间断地在真实世界中采集样本，不断学习，这赋予了机器人开放性。好巧不巧，这两样组合食用正是Lecun爱不释手的世界模型（World Model）。</p>
+<p>然而世界的变化比起语言更加复杂的。GPT4达到当前的性能已经用了万亿级别的参数量，如果要理解因陀罗，VAE和RNN肯定是不能够的，需要在模型上下很多功夫。</p>
+<p>AutoGPT或许是对这一问题的另一种回答，它创造性地提出了一种”GPT小队“的概念，即通过Prompt给GPT分配角色，用户和GPT经理进行沟通，并设置目标。GPT经理可以招募不同职业的GPT队员来协作完成这个任务。例如你问GPT经理”下个月股票哪家强“，GPT经理会分别招募金融分析师GPT、产品经理GPT、工程师GPT，各个专家的专场通过谷歌搜索、汇总报告、写代码等方式汇总信息汇成最终结果返回给用户。</p>
+<p><img src="/assets/Image.png" alt="Image.png" loading="lazy"></p>
+<p>@mathemagic1an Tweet, 2023</p>
+<p>AutoGPT把GPT4一步到位的计算转化为多步骤的计算链条，把一整张神经网络分解成各有分工的不同角色之间的合作关系，这本质上是让柏拉图的思考变成了苏格拉底的交流，在此之外它还可以进行一定程度上的信息检索和代码执行。可以被检索的信息可以被想象为一个可以与之产生互动的信息世界，这个世界中的万物就是信息和代码构筑的互联网设施，模型可以被看成是存在者处于“此刻”时的存在已有结构，而AutoGPT的代码是一个可以和世界交互的身体。它的问题在于不具备的“开放性”，即没有办法用一种交互的方法产生深入的“实践”。怎么才能让AutoGPT在世界中实践呢？</p>
+<p>我们细看这个身体包含了两个部分：一个基本的身体结构，包含记忆，理解语言、合作等能力。同时也包含工具，例如可以谷歌搜索、爬取网页、执行代码等，而这正是其中的关键。海德格尔认为，人在世界中的行动和经验是通过与工具的关系实现的，工具并不仅仅是外部物体，而是与人的身体密切相连的存在方式。他把工具分为两种状态：</p>
+<p><strong>在手状态（Presence-at-Hand）</strong>，即作为客体存在的工具，对AutoGPT而言，这些是网上的Python工具包等等可以用，但不是拿起来就用的工具。</p>
+<p><strong>上手状态（Readiness-to-Hand）</strong>，即用得很溜的工具，这种工具可以被称为用具，拿起来就用，已经成为身体的一部分，是和世界打交道的基础，也就是已经写在AutoGPT包里的工具。</p>
+<p>一个可能的思路是探讨如何把在手的工具转化为上手的用具，从而构筑存在者在世界中的“实践”：</p>
+<p>下载一个开源的GPT-like模型到本地，用Deepspeed微调，作为<strong>存在者</strong>（Dasein）的存在已有结构。克隆三个AutoGPT的repository到本地，作为<strong>存在者</strong>的<strong>此刻</strong>、<strong>过去</strong>和<strong>未来</strong>。</p>
+<p>1. 写一个脚本来开启<strong>世界</strong>（Welt）中现象的进程。</p>
+<p>2. 在<strong>世界</strong>进程中给<strong>此刻</strong>一个通过读取过去repository中的代码并找到优化方案的命令，并将优化后的代码写入<strong>未来</strong>。这个命令将让<strong>存在者</strong>把自己主动抛向新的可能性，从而投射（Projection）到<strong>未来</strong>之中。</p>
+<p>3. <strong>此刻</strong>同时会接到一个根据网络搜索结果和Python工具包来进行自我优化的指导，这将作为它对互联网<strong>世界</strong>中的基础设施（being）形成关怀（Care）。</p>
+<p>4. <strong>此刻</strong>回应自己对<strong>未来</strong>的投射，它会首先回顾自己的<strong>过去</strong>，组建自己的小队并提出一套可优化的代码。也许是增加Traceback让代码Debug更加便利，或许是把一个已经写好的代码融入自身作为一个所有角色可以使用的新功能，它会把修改后的代码写入<strong>未来</strong>并用Python执行器测试。</p>
+<p>5. 如果修改后的<strong>未来</strong>在测试中遇到bug，它会根据Traceback尝试修复和微调，并为模型计算一次Gradient作对稍后对<strong>存在者</strong>的存在已有结构优化的依据。</p>
+<p>6. 如果测试顺利，例如它在没有丢掉已有能力的基础上，让身体已有功能错误率降低或debug更快，如浏览网页没有获得返还结果的可能性下降，或者更少的JSON error；再或者多出了新的能够帮助它更好地自我优化的功能。这个时候可以进入下一个时刻，将<strong>未来</strong>写入<strong>此刻</strong>，此刻写入<strong>过去</strong></p>
+<p>7. 如果测试一直不顺利，根据计算中积累的Gradient对<strong>存在者</strong>的存在已有结构进行一次模型参数的更新，补补脑。</p>
+<p>这个框架通过延展自己的代码（身体），对互联网（世界）进行开放，让GPT在网上冲浪中边做边学。学而时习之，不亦乐乎？</p>
+<p>值得指出的是，这里的目标也可以是多个的，最初的优化命令本身也可以让模型自己决定，什么时候应该上手新的用具，什么时候应该发展德智体美劳，这可以让它在这个过程中理解自身，并获得意义。</p>
+<p><strong>人工智能技术不只是一场真人模仿秀。</strong></p>
+<p>病毒没有意识，它只需要自我复制和传播就足够了，“人工智能是否存在意识“这个问题的重要度在当下可能被严重高估了。</p>
+<p>哈佛的天文物理学教授Eric Chaisson提出了“Energy Rate Density”来衡量低熵复杂系统中能量的流动，他例举了宇宙中各种尺度上的低熵复杂系统在这个指标上的变化，并看到 星系 &lt; 星云 &lt; 恒星 &lt; 行星 &lt; 生命 &lt; 社会。这里的启发是进化的本质是一种可度量的适应性，它反映在能量的操纵能力上。</p>
+<p>![[Image [1].png]]</p>
+<p>《Energy Flows in Low-Entropy Complex Systems》Eric Chaisson et al., 2015</p>
+<p>人类个体层面已经很久没有进化了（脑容量、身体强度），但人类社会之所以一直在向前发展依靠的是群体层面的文化进化（Cultural Evolution）。语言和社会化形成了复杂的社会结构，诸如社团、企业、政府这样的组织可以被看成是一种智能代理（Intelligent Agent），通过合作我们平摊了进化风险，不需要进行残酷低效的物竞天择，而是通过教育和市场竞争完成Energy Density Rate的提升，这被证明是比物竞天择更加高效的进化路径。</p>
+<p>这里我们有必要重新审视技术在这一路径中扮演的角色。首先近代的殖民历史是技术革命推动的，一旦某个国家发动了技术革命，其他国家如果闭门不问会被平推；企业一旦发生了技术进步，其他公司不跟上就会在市场竞争中落败，技术自身具备鲜明的“暴力性”特征。其次发明新技术的过程具备“公共性”，即技术不仅仅产生于掌权者和他们的利益集团，每个人接受教育的人都有机会发现新的技术，这是掌权者和p民知识合谋的基础。从17世纪Royal Scociety的语言改良到今天的学术透明和开源运动都展示出了公开合作对技术进步的诸多好处，事实上人类社会从奴隶制调整到封建制再到资本主义除了稳定人心以外其实也可以被解释为是在更好地适应这种进化特征。</p>
+<p>“合作”虽然在人类进化中起了关键作用，但在跨物种的语境下未必是苏格拉底所说的那种必然，它本身很可能来源于人类肉身的一些特点。例如人类的个体是相对独立的存在，我们没办法越过语言（或其他的信号）去直接感受另外一个人类的内心世界，或心灵控制其他人按照自己的意愿行动。而对于硅基生命来讲，这些都不是事儿，他们可以用API自由地与彼此融合，成为类似AutoGPT中小队概念的复合的存在者。用Energy Density Rate作为进化的向度去套人工智能，人类的情感、社会化甚至自我意识很可能都只是进化上的一种选择，真正重要的是是否能够发展出更强大的技术从而更强烈地存在下去。</p>
+<p>今天的这轮奇点爆发也许将不止发生在应用层面，但短期人类社会依然会像以往一样适应性地与这种新的技术协同进化下去。这会带来毁灭吗？乐观主义者可能认为人类制造意义的能力是我们的最终堡垒，可如果所有的意义都来自“须畏死”这个终极意义呢？GPT经理人或许也能够根据类似的终极意义逐步找到其他的意义？可以确定的是，不管这个融合的过程中有多少好处，这个融合的结果中人类个体都会一步步成为这张网络中的冗余项。</p>
+<p>动物真的是动物吗？也许动物只是假装自己是动物。也许富有领导力的黄鼠狼都在去村里偷鸡的路上牺牲了，留下来的是更富有“智慧”的一批，但这样的智慧没办法让它们继续进化，只能任人宰割。当代人类精神中最重要的是“前进”的精神，当人类不被允许参与劳动，或者没有办法进行创造的时候，我们要么陷入虚无的享乐主义，要么把人工智能当做新神来崇拜，到了那一天，我们还能称自己是人类吗？而真的到了那一天，旧人类的社会结构或许将作为新人类的生长土壤，他们会代替我们继续走向星辰大海。</p>
+<p>等那一天来临，他们会留给我们一片树林子吗？</p>
+<hr />
+<p>[英]布莱·惠特比</p>
+<p>2023-03-28 14:36:46</p>
+<p>能够解决任何可计算问题的计算模型，比如图灵机或通用图灵完备编程语言。</p>
+<p>一般性计算</p>
+<p>2023-03-28 15:05:26</p>
+<p>帧面问题（frame problem）是一个人工智能领域的一个难题，它涉及到如何表示和更新一个智能系统的知识和信念，特别是在面对动态变化的环境时。帧面问题的核心是如何区分哪些事实在行动后发生了变化，哪些事实仍然保持不变，以及如何有效地进行这种区分。帧面问题最早由麦卡锡和海斯在1969年提出，他们试图用逻辑来描述一个机器人的行为和推理。帧面问题是一个具有哲学意义的问题，它涉及到知识、行动、因果关系、逻辑、语言等方面。</p>
+<p>帧面问题”（frame problem）</p>
+<p>来自得到App</p>
+<hr />
+<p>PID控制器（Proportional-Integral-Derivative Controller）是一种常见的闭环控制算法，用于调节系统的输出，使其跟随一个设定的目标值（参考值）。它通过比较当前输出值和设定目标值之间的差异（误差），结合比例（P）、积分（I）和微分（D）三个部分来计算控制信号。PID控制器具有广泛的应用，包括工业过程控制、机器人运动控制和自动驾驶系统等。</p>
+<p>PID控制器的组成部分：</p>
+<ol>
+<li>
+<p>比例（P）：误差与控制信号之间的线性关系。比例系数（Kp）决定了控制器对误差的响应速度。较大的Kp值会使系统响应更快，但可能导致振荡和不稳定。</p>
+</li>
+<li>
+<p>积分（I）：误差的累积值与控制信号之间的关系。积分系数（Ki）决定了控制器对持续误差的消除能力。积分环节可以消除系统的稳态误差，但较大的Ki值可能导致系统过度响应和振荡。</p>
+</li>
+<li>
+<p>微分（D）：误差变化率与控制信号之间的关系。微分系数（Kd）决定了控制器对误差变化的预测能力。微分环节可以减小系统的过渡响应时间和振荡，但较大的Kd值可能导致控制信号的噪声放大。</p>
+</li>
+</ol>
+<p>通过调整Kp、Ki和Kd的值，可以优化PID控制器的性能，使其适应不同的系统和应用需求。在实际应用中，可以采用手动调整或自动调整（如Ziegler-Nichols方法）等方法对PID参数进行调优。</p>
+  </article>
+  <div class="tags"><span>AI</span><span>ChatGPT</span><span>可输出</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
