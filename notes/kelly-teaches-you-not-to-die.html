@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>凯利不教你下注，教你不死：一篇凯利公式锐评 · znjxz</title>
+<meta name="description" content="全凯利的八个前提几乎全假 / 增长率就是互信息 / 渐近理论与有限期权的冲突——接续《货币的第四种价格》的欠账">
+<meta name="group" content="市场评论">
+<meta name="created" content="2026-11-11">
+<meta name="tags" content="可输出,凯利公式,仓位管理">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --paper:#faf8f5; --paper-deep:#f3efe9; --ink:#1f1d1a; --ink-soft:#3d3934;
+    --muted:#8a8279; --gold:#8c7554; --rule:#ddd6cb; --rule-soft:#ece7df;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --paper:#1a1917; --paper-deep:#211f1c; --ink:#e8e3da; --ink-soft:#c9c3b8;
+            --muted:#8f877c; --gold:#c9a97a; --rule:#33302b; --rule-soft:#272521; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"EB Garamond","Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+    font-size:18.5px;line-height:1.9;
+    font-feature-settings:"palt" 1,"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.36;
+    background-image:
+      radial-gradient(circle at 18% 24%,rgba(140,117,84,.035) 0 1px,transparent 1px),
+      radial-gradient(circle at 72% 68%,rgba(140,117,84,.028) 0 1px,transparent 1px);
+    background-size:137px 149px,211px 197px;
+  }
+  .wrap{position:relative;z-index:1;max-width:40rem;margin:0 auto;padding:4.5rem 1.75rem 7rem}
+  .back{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--muted);text-decoration:none;margin-bottom:2.5rem;transition:color .2s}
+  .back:hover{color:var(--gold)}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 1.4rem;font-weight:500}
+  h1{font-size:2rem;font-weight:400;line-height:1.4;letter-spacing:.015em;margin:0 0 1.1rem}
+  .meta{color:var(--muted);font-size:.88rem;letter-spacing:.04em;margin:0 0 2.6rem}
+  .rule-double{margin:0 0 3.2rem;border:0;border-top:1px solid var(--rule);
+               border-bottom:1px solid var(--rule-soft);height:3px}
+  article h2{font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+     color:var(--muted);margin:3.4rem 0 1.4rem;padding-bottom:.7rem;
+     border-bottom:1px solid var(--rule-soft)}
+  article h3{font-size:1.08rem;font-weight:500;margin:2.4rem 0 1rem;color:var(--ink-soft)}
+  article p{margin:0 0 1.5rem}
+  article em{font-style:italic;color:var(--ink-soft)}
+  article strong{font-weight:500;color:var(--ink)}
+  article a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+  article a:hover{color:var(--gold);border-color:var(--gold)}
+  article ul,article ol{margin:0 0 1.5rem;padding-left:1.4rem}
+  article li{margin:0 0 .5rem}
+  article blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.6rem;
+             border-left:1px solid var(--gold);color:var(--ink-soft);font-size:1rem;
+             font-style:normal}
+  article blockquote p:last-child{margin-bottom:0}
+  article code{font-family:"SF Mono","Cascadia Code",monospace;font-size:.88em;
+                background:var(--paper-deep);padding:.1em .35em;border-radius:3px}
+  article pre{background:var(--paper-deep);padding:1.1rem 1.3rem;border-radius:4px;
+               overflow-x:auto;margin:1.8rem 0;line-height:1.65}
+  article pre code{background:none;padding:0;font-size:.85em}
+  article img{max-width:100%;height:auto;border-radius:4px;margin:1.5rem 0}
+  article hr{border:0;border-top:1px solid var(--rule-soft);margin:3rem 0}
+  article table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.94rem}
+  article th,article td{text-align:left;padding:.75rem .6rem;
+                         border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  article th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+              color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule)}
+  .wikilink{border-bottom:1px solid var(--gold)}
+  .wikilink-unpublished{color:var(--muted);border-bottom:1px dotted var(--rule)}
+  .embed-missing{color:var(--muted);font-size:.9em}
+  mark{background:rgba(200,169,122,.28);color:inherit;padding:.05em .2em;border-radius:2px}
+  .task{display:block;margin:.35rem 0;line-height:1.75}
+  .task .box{display:inline-block;width:1.05em;height:1.05em;line-height:1.05em;
+              text-align:center;border:1px solid var(--rule);border-radius:3px;
+              margin-right:.6em;font-size:.82em;color:var(--gold);vertical-align:.08em}
+  .task-done{color:var(--muted)}
+  .task-done .box{border-color:var(--gold)}
+  .callout{margin:2.2rem 0;padding:1.2rem 1.4rem;border-radius:4px;
+            background:var(--paper-deep);border-left:3px solid var(--gold)}
+  .callout-title{font-size:.82rem;letter-spacing:.12em;color:var(--gold);
+                  margin-bottom:.6rem;font-weight:500}
+  .callout-body p:last-child{margin-bottom:0}
+  .callout-warning{border-left-color:#b8860b}
+  .callout-danger{border-left-color:#a33}
+  .callout-success{border-left-color:#5a7a4a}
+  .callout-quote{border-left-color:var(--muted)}
+  .callout-quote .callout-title{display:none}
+  article .MathJax,article mjx-container{font-size:1.02em!important}
+  article mjx-container[display="true"]{margin:1.6rem 0!important}
+  .tags{margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--rule-soft)}
+  .tags span{display:inline-block;font-size:.76rem;letter-spacing:.1em;
+              color:var(--muted);margin:0 .8rem .5rem 0}
+  .tags span::before{content:"#"}
+  footer{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--rule);
+          color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  footer p{margin:0 0 .5rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--gold)}
+  @media (max-width:520px){
+    body{font-size:17.5px}
+    .wrap{padding:3rem 1.3rem 5rem}
+    h1{font-size:1.62rem}
+    article table{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 花园</a>
+  <p class="eyebrow">市场评论</p>
+  <h1>凯利不教你下注，教你不死：一篇凯利公式锐评</h1>
+  <p class="meta">2026-11-11 · 持续修订</p>
+  <hr class="rule-double">
+  <article>
+<h1 id="_1">凯利不教你下注，教你不死</h1>
+<blockquote>
+<p>材料：<code>kelly criterion/</code> 专题二十余篇（原始论文、Thorp/Ziemba、局限批评、遍历性实验与人生凯利）。本篇仍按【原】+【评】段段对应。观点属原作者和文献，代价由评论者自负。
+上一篇《货币的第四种价格》结尾欠了一笔账：<em>凯利公式假设胜率恒定——它从没说过这个假设免费</em>。这篇来还。</p>
+</blockquote>
+<h2 id="_2">〇、先把公式请出来</h2>
+<blockquote>
+<p><strong>原</strong>：一个 fraction 下注，胜率 $p$、败率 $q=1-p$，赢面比例 $b$、输面比例 $a$，则最优下注比例
+$$f^{*}={\frac {p}{a}}-{\frac {q}{b}}$$
+只要胜率比（WLP）乘以赔率比（WLR）大于 1，你就"有优势"，$f^*$ 为正。</p>
+</blockquote>
+<p><strong>评</strong>：请盯着这个公式看十秒。它出现在每一篇"仓位管理"文章里，被画成下注金字塔、被印在交易 T 恤上。但注意一件事——<strong>公式里没有任何一个变量是关于"你赚多少"的。</strong> $p$ 是概率，$b$ 是赔率，全都在描述环境；唯一的自由变量 $f$ 描述的是你的行为。这个公式优化的是财富的<strong>几何增长</strong>，而它的解之所以重要，是因为另一个名字：<strong>破产的分布</strong>。</p>
+<p>换句话说，凯利公式从头到尾不是一道收益题，是一道生存题。它算出的不是"你该押多大"，而是"超过这个数，你迟早会以概率 1 死"。</p>
+<h2 id="_3">一、平均是给死人看的</h2>
+<blockquote>
+<p><strong>原</strong>：这就像去给俄罗斯轮盘赌做客户满意度调查，然后得出结论说这是个很棒的游戏。—— Ole Peters 谈集合平均与个体路径的差别</p>
+</blockquote>
+<p><strong>评</strong>：他真正做的实验所有人都该看一遍。一百万人各玩 60 轮硬币游戏：正面赢掉注额的 50%、反面输掉 40%。每轮期望为正，集合平均的终局接近 <strong>2,000 美元——初始资金的 20 倍</strong>，漂亮得可以写进教科书。但把镜头对准<strong>单个人的时间路径</strong>：80% 的人手里的钱低于起点，三分之一的人剩不到 1 美元，而平均值被一个赚了一亿的离群值生生拉起来。</p>
+<p><strong>平均，是给不在局里的人看的。</strong> 你不了集合平均，你过你自己的那条路径。这是遍历性断裂（ergodicity breaking）的全部含义：群体的平均表现与个体的长期表现不是一回事——而凯利，是所有策略里唯一一个<strong>把"路径会死人"写进目标函数</strong>的。它不是最大化收益，是最大化"你走的这条路径不要死"的对数。</p>
+<h2 id="_4">二、全凯利是一张你兑不空的支票</h2>
+<blockquote>
+<p><strong>原</strong>：TheZvi 的八条——全凯利正确，当且仅当以下全部为真：1. 你只关心本金长期的几何增长；2. 输光确实是无限坏；3. 你不担心固定成本；4. 每次出现机会时你的下注额无最小/最大限制；5. 未来有无限多个有优势的机会；6. 除了下注你没有别的方式与本金互动；7. 你扛得住回撤；8. <strong>你完全知道自己的优势。</strong> 他的结论：这八条里，至少七条几乎从来不为真。</p>
+</blockquote>
+<p><strong>评</strong>：把这八条贴在交易室墙上。每一条都是对现实的一次否决：时间是有限的、机会是会断粮的、你的钱是要交房租的、市场会因为你变胖而改赔率、而<strong>你根本不知道自己的 edge</strong>。</p>
+<p>还有一条数学事实配套食用：按凯利下注，你有 $1-p$ 的概率最终经历一次 $p$ 的回撤——押上 10 美元，就有 10% 的概率某天见到 1 美元。模拟器里只是数字，现实生活中回撤会顺着肾上腺素改变你的执行力：手抖、改计划、提前止损、加倍翻本。<strong>执行力一旦变形，半凯利都守不住。</strong> 所以 fractional Kelly 不是胆小的代名词，它是对"估计误差税"和"人性税"的定价。</p>
+<h2 id="_5">三、你以为的优势，是猜的</h2>
+<blockquote>
+<p><strong>原</strong>：增长最优组合的计算"可能遭受严重的 garbage in, garbage out 问题。如果组合权重很大程度上是估计误差的函数，那么事前预测与事后表现会有天壤之别。应对未知风险的一个方法，是投得比凯利更少。"——并且，"由于 Elog 计算对均值估计误差极端敏感，这些估计必须准确，稳妥起见注码应当缩减。"</p>
+</blockquote>
+<p><strong>评</strong>：$f^*$ 对 $p$ 的误差是<strong>放大</strong>关系，不是缩微。你以为自己 55% 的胜率，实际 50%，公式给的注码不是"略大"，是"大到你在错误的方向上全速狂奔"。凯利框架里最诚实的一句话就在批评里：<strong>注码缩减不是为了保守，是为了让"其实我不知道"这句话有价格。</strong></p>
+<p>而整库笔记里最毒的一句注释在这里：</p>
+<blockquote>
+<p><strong>原</strong>：凯利准则并不假设系统是遍历的。然而，它背后的假设是"未来的结果与历史上的结果相似"。</p>
+</blockquote>
+<p><strong>评</strong>：翻译一下：<em>它不吃旧世界的遗像，但它默认遗像是真的。</em> 上一篇文章说所有对概率的外推外推的都是"支柱寿命"——凯利公式就是这句话的数学形式。regime 一变，你的 $p$ 和 $b$ 集体作废，而公式会精确地、满仓地、以几何增速把你带进坟墓。<strong>它不会犯错，它只会精确地执行一个错误的假设。</strong></p>
+<h2 id="_6">四、增长率的真名，叫互信息</h2>
+<blockquote>
+<p><strong>原</strong>：凯利准则下，期望对数增长率与多次下注累积的互信息直接相关——凯利准则为"把互信息诠释为资本增长率"提供了操作性解释。（1956 年 Kelly 原文的视角：信息率 = 增长率。）</p>
+</blockquote>
+<p><strong>评</strong>：这是全专题最被低估的一句。如果增长率的单位是 <strong>bits</strong>，那么结论冷酷得干净：<strong>你的超额收益不是从赌桌上赢来的，是从信息差里搬来的。</strong> 加倍注码是通货膨胀，只有把"别人不知道的你知道"这部分做大，才是真实的量宽。</p>
+<p>这直接决定时间花在哪：与其在已有 edge 上加杠杆，不如去寻找新的互信息。研究、读报、看数据、拆逻辑，这些不性感的活动才是 $f^*$ 的供给侧。<strong>凯利不是赌徒的圣经，是信息消费者的会计学。</strong></p>
+<h2 id="_7">五、渐近理论，有限人生</h2>
+<blockquote>
+<p><strong>原</strong>：要让凯利以一定置信度跑赢其他策略，需要的时间可能从 <strong>80 年到 200 年</strong>。并且，"成功创始人理解生存和失败率……他们以糟糕的赔率下小注来留在牌桌上，并改善下一注的赔率。只有当赔率和回报开始 favor 他们时才加注。"</p>
+</blockquote>
+<p><strong>评</strong>：一句 80–200 年，把凯利从实用手册打回数学定理。你的交易生涯、你的本金曲线、你的耐心，全部是<strong>有限期权的定价</strong>，而凯利的证明写的是无穷下注次数。在有限期界里，正确的问题不是"f* 是多少"，而是"在我还活着、还没输光、机会还没消失之前，达成目标的概率是多少"。</p>
+<p>于是有了那个漂亮的调和：<strong>创始人式凯利</strong>——用最坏的赔率、最小的注码留在牌桌上（买信息、攒样本），等赔率真的转向时再全速。这不是对凯利的背叛，是凯利在有限世界里的正确读法：先算生存，再算增长，最后才是加注。</p>
+<h2 id="_8">六、万物皆可凯利，以及它的温柔</h2>
+<blockquote>
+<p><strong>原</strong>：把凯利推广到人生决策：职业、创作、恋爱，全部是本钱（bankroll）× 优势（edge）的组合。"我那些生活中 slack 最多的朋友恰恰最厌恶风险……拒绝对自己下注的人，注定永远只比同辈里最普通的人好 20%。"</p>
+</blockquote>
+<p><strong>评</strong>：这段是我推荐所有人读这篇的原因。凯利最锋利的应用根本不在市场：<strong>你的"本钱"远不止钱——时间、关系、健康、声誉、专业能力，都是要配置的 bankroll；而多数人对它们执行了"零风险零回报"的政策，理由是风险厌恶。</strong></p>
+<p>风险厌恶不是中性词。<strong>不下注，也是一种下注——你把本金全押在了"现状永续"上。</strong> 而这恰恰是上一篇文章反对的东西：现状不是常态，是 regime。凯利真正的残酷在这里：它逼你承认，你从来都在赌，区别只在有没有算过 f*。</p>
+<h2 id="_9">尾声：三条校准</h2>
+<p>接上一篇的节奏，读完凯利留三件事：</p>
+<ol>
+<li><strong>先问生死，再问大小。</strong> 拿到任何"机会"先算 $f^*$：如果它大于你"输得起"的比例，机会就不是机会，是掠食者。Kelly 是空仓理由的提供者——没有 edge 时它的答案是 0。</li>
+<li><strong>把注码打上两重折。</strong> 一折给"你以为的优势其实没有"，一折给"回撤会毁掉你的执行力"。全押的正确性只存在于第八条前提成立时，而你我都不知道它成立不成立。</li>
+<li><strong>增长在信息里，不在注码里。</strong> 既然增长率的单位是 bits，最该加杠杆的地方是研究和学习，不是仓位。</li>
+</ol>
+<p>Pozsar 那篇问：你赚的是哪根柱子的钱？凯利这篇问：<strong>你的 $p$ 是从哪根柱子上量下来的？</strong> 两个问题其实是同一个问题——而它从来没有免费过。</p>
+  </article>
+  <div class="tags"><span>可输出</span><span>凯利公式</span><span>仓位管理</span></div>
+
+  <footer>
+    <p>这篇笔记仍在修订。<a href="/">返回花园</a></p>
+    <p>© <span id="y"></span> znjxz</p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.02 }
+  };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

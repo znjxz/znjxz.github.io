@@ -5,6 +5,13 @@
     <description>持续修订的笔记，没有最终版本。</description>
     <language>zh-CN</language>
     <item>
+      <title>凯利不教你下注，教你不死：一篇凯利公式锐评</title>
+      <link>https://znjxz.github.io/notes/kelly-teaches-you-not-to-die.html</link>
+      <guid isPermaLink="true">https://znjxz.github.io/notes/kelly-teaches-you-not-to-die.html</guid>
+      <pubDate>2026-11-11T00:00:00+08:00</pubDate>
+      <description>全凯利的八个前提几乎全假 / 增长率就是互信息 / 渐近理论与有限期权的冲突——接续《货币的第四种价格》的欠账</description>
+    </item>
+    <item>
       <title>读书与得到</title>
       <link>https://znjxz.github.io/notes/reading-and-dedao.html</link>
       <guid isPermaLink="true">https://znjxz.github.io/notes/reading-and-dedao.html</guid>
@@ -136,12 +143,5 @@
       <guid isPermaLink="true">https://znjxz.github.io/notes/dedao-zhuoke-science.html</guid>
       <pubDate>2024-10-29T00:00:00+08:00</pubDate>
       <description>核能/返老还童/肉链/聪明药</description>
-    </item>
-    <item>
-      <title>杂志剪藏：《读书》月刊 2022年2期</title>
-      <link>https://znjxz.github.io/notes/dushu-monthly-2022-02.html</link>
-      <guid isPermaLink="true">https://znjxz.github.io/notes/dushu-monthly-2022-02.html</guid>
-      <pubDate>2024-10-29T00:00:00+08:00</pubDate>
-      <description>《读书》2022年2期</description>
     </item>
 </channel></rss>
